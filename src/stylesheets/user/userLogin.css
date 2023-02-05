@@ -1,0 +1,19 @@
+.cinedivonelog{
+    @apply bg-slate-600
+    h-80
+    -mt-20
+    ml-48
+    mb-14
+    rotate-12
+    rounded-3xl
+}
+
+.cinedivtwolog{
+    @apply bg-slate-600
+    h-80
+    -mt-20
+    ml-24
+    mb-14
+    rotate-12
+    rounded-3xl
+}
