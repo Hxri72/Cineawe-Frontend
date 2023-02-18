@@ -60,6 +60,7 @@ button:focus {
     
 }
 
+
 .formDiv{
     @apply
     bg-slate-500
@@ -103,4 +104,7 @@ button:focus {
     rounded-md
 }
 
+.loader-parent{
+
+}
 

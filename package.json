@@ -9,14 +9,17 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.1.6",
     "axios": "^1.2.6",
+    "email-validator": "^2.0.4",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-password-checklist": "^1.4.3",
     "react-redux": "^8.0.5",
     "react-router": "^6.8.0",
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "react-stripe-checkout": "^2.6.3",
+    "react-table": "^7.8.0",
     "react-toast": "^1.0.3",
     "redux": "^4.2.1",
     "web-vitals": "^2.1.4"
@@ -47,6 +50,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.4"
-  },
-  "proxy": "https://localhost:5000"
+  }
 }

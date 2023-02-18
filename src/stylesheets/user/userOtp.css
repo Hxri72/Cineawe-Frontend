@@ -1,0 +1,19 @@
+.otpformdiv{  
+    @apply
+    h-96
+    w-96
+    bg-slate-500
+    -mt-20
+    rounded-xl
+}
+
+.otpInput{
+    @apply
+    w-10 
+    h-10 
+    mr-2
+    bg-gray-400
+    rounded-sm
+    
+    
+}

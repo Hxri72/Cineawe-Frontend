@@ -5,3 +5,32 @@
 .toastContainer {
     z-index: 100;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill{
+  -webkit-text-fill-color: darkgray !important;
+}
+
+
+.loader-parent{
+  position: fixed;
+  @apply
+  bg-black
+  z-50
+  opacity-70
+  w-full
+  h-screen
+}
+

@@ -1,0 +1,46 @@
+.maindiv{
+    @apply
+    w-full
+    h-full
+   bg-slate-900
+}
+
+.headerdiv{
+    @apply
+    w-full
+    h-24
+    bg-slate-900
+}
+
+.bannerdiv{
+    @apply
+    w-full
+    h-96
+    bg-zinc-900
+}
+
+.headerSearch {
+    @apply
+    mt-3
+    h-10
+    w-2/3
+}
+
+.rowposters{
+    @apply
+    w-52
+    h-72
+}
+
+.displayMovies::-webkit-scrollbar{
+    display: none;
+}
+
+.postersHome{
+    @apply
+    w-48
+    h-60
+    mr-2
+    
+}
+

@@ -1,5 +1,5 @@
 import axios from 'axios'
 
-export const axiosInstance = axios.create({
-    baseURL : 'https://localhost:5000/api/user'
+export const axiosInstanceAdmin = axios.create({
+    baseURL : 'http://localhost:5000/api/admin'
 })
