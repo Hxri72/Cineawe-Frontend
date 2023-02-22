@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react"
+import { useDispatch } from "react-redux";
 import { Link, useNavigate} from "react-router-dom";
 import { toast } from "react-toast";
 import { LoginUser } from "../../../../api_Integration/User/users";
+import { setUser } from "../../../../Redux/usersSlice";
 
 
 function Form() {
+  const dispatch = useDispatch();
+
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const navigate = useNavigate()
@@ -16,9 +20,7 @@ function Form() {
   }
 
   const handleSubmit = async(e)=> {
-      console.log(loginData)
       e.preventDefault()
-
       if(email === ""){
         return toast.warn('Email is required')
       }else if(password === ""){
@@ -26,12 +28,13 @@ function Form() {
       }
 
       const response = await LoginUser(loginData)
-      console.log(response)
+      const {userData,data,message}=response
       if(response.success){
-        navigate('/')
-        localStorage.setItem("token",response.data)
+        dispatch(setUser(userData))
+            navigate('/')
+        localStorage.setItem("token",data)
       }else{
-        toast(response.message,{
+        toast(message,{
           backgroundColor:'darkred' ,
           color: 'ffffff'
         })

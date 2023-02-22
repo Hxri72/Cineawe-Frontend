@@ -1,33 +1,33 @@
-import React,{useState} from "react";
+import React from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { getCurrentUser } from "../../../api_Integration/User/users";
+import {setUser} from '../../../Redux/usersSlice'
 
-function ProtectedRoute(props) {
-  const [user,setUser] = useState("")
+function ProtectedRoute(props) { 
   const jwtToken =  localStorage.getItem("token")
- 
+  const dispatch = useDispatch();
 
   const GetCurrentUser = async() => {
     try {
       const response = await getCurrentUser({jwtToken})
       if(response.success){
-        setUser(response.data)
-         
+        dispatch(setUser(response.data))
       }else{
-        setUser(null)
+        dispatch(setUser(null))
         console.log(response.message)
       }
 
     } catch (error) {
-      setUser(null)
+      dispatch(setUser(null))
       console.log(error.message)
     }
   }
 
   useEffect(()=>{
     GetCurrentUser()
-  },[])
+  })
 
     if (localStorage.getItem("token")){
         console.log('User is loggedIn')
@@ -36,7 +36,6 @@ function ProtectedRoute(props) {
         console.log('User is Not LoggedIn')
         return <Navigate to={"/login"}/>;
     }
-  
     
 }
 

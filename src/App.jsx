@@ -30,11 +30,8 @@ function App()  {
           <Route path='/signup' element={<PublicRoute><Signup/></PublicRoute>} exact/>
           <Route path='/otp' element={<Otp/>} exact/>
 
-
           <Route path='/owner' element={<TheaterLogin/>} exact/>
           <Route path='/ownersignup' element={<OwnerSignup/>} exact/>
-
-
 
           <Route path='/admin' element={<PublicRouteAdmin><AdminLogin/></PublicRouteAdmin>} exact/>
           <Route path='/adminhome' element={<AdminHome/>} exact/>
