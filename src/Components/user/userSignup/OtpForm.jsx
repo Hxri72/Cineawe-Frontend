@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{Fragment, useEffect} from "react";
 import { toast } from "react-toast";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -8,8 +8,6 @@ import { useState } from "react";
 
 
 function OtpForm(props) {
-
-  const [otp, setOtp] = useState("");
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(59);
 
@@ -97,6 +95,7 @@ function OtpForm(props) {
     
   
   return (
+    <Fragment>
     <div className="flex w-full h-96 justify-center" >
       <div className="otpformdiv shadow-lg">
         <div className="p-10">
@@ -165,6 +164,7 @@ function OtpForm(props) {
       </div>
       
     </div>
+    </Fragment>
   );
 }
 

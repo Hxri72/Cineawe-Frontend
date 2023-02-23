@@ -1,4 +1,5 @@
-import { axiosInstanceAdmin } from '../index'
+import { axiosInstanceAdmin } from '../axiosInstance'
+
 export const createAdmin = async (payload) => {
     try {
         const response = await axiosInstanceAdmin.post("/admincreate",(payload))

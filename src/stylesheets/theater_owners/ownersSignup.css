@@ -5,6 +5,8 @@
     p-4
 }
 
+
+
 .innerDivOwnerSignup{
     background-image: url('../../Assets/moderator/OwnerLogin/How\ Architecture\ Speaks\ Through\ Cinema.jpg');
     background-size: 100% 100%;
@@ -23,10 +25,13 @@
 
 .applogoOwnerSignup{
     @apply
+    
     w-72
     pt-5
-    pl-5
-    ml-16
+    pr-10
+    ml-7
+    max-sm:contents
+    sm:ml-20
 }
 
 .ownerSignupformdiv{
@@ -36,12 +41,18 @@
     
 }
 
+@media screen and (max-width :325px) {
+    .ownerSignupForm{
+        @apply
+        w-72
+    }
+}
+
 .ownerSignupForm{
     @apply
     sm:bg-[#020000e6]
     bg-[#020000e6]
     sm:w-96
-    w-80
     h-full   
     rounded-md
     border-2
@@ -50,7 +61,8 @@
 
 .ownerSignupInputField{
     @apply
-    w-72
+    w-60
+    sm:w-72
     h-10
     gap-2
     pl-2

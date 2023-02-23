@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Fragment} from 'react'
 
 import '../../../stylesheets/user/userSignup.css'
 import Signup from '../../../Components/user/userSignup/userSignup'
@@ -7,9 +7,11 @@ import Signup from '../../../Components/user/userSignup/userSignup'
 
 function signup() {
   return (
-    <div className='content-wrapper'>
-      <Signup/>
-    </div>
+    <Fragment>
+      <div className='content-wrapper'>
+        <Signup/>
+      </div>
+    </Fragment>
   )
 }
 

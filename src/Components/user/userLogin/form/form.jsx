@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { Link, useNavigate} from "react-router-dom";
@@ -41,6 +41,8 @@ function Form() {
       }
   }
   return (
+    <Fragment>
+
     <div>
       <div className="grid lg:flex justify-between">
         <div className="flex -ml-24 mt-16">
@@ -71,7 +73,7 @@ function Form() {
              name="email"
              value={email}
              onChange={(e) => setEmail(e.target.value)}
-            ></input>
+             ></input>
 
             <input 
             className="signupInput" 
@@ -93,6 +95,7 @@ function Form() {
         </div>
       </div>
     </div>
+    </Fragment>
   );
 }
 

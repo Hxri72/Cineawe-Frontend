@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import '../../../stylesheets/admin/adminHome.css'
-import Sidenav from '../../../Components/admin/adminHome/Header'
-import Maindiv from '../../../Components/admin/adminHome/Dashboard'
+import Sidenav from '../../../Components/admin/adminHome/Includes/Header'
+import Maindiv from '../../../Components/admin/adminHome/Dashboard/Dashboard'
 
 function AdminHome() {
 
@@ -13,13 +13,14 @@ function AdminHome() {
   //   navigate('/admin')
   // }
   return (
-    <div className='adminMainDiv'>
-      <div  className='flex adminbase'>
-        <Sidenav/>
-        <Maindiv/>
+    <Fragment>
+      <div className='adminMainDiv'>
+        <div  className='flex adminbase'>
+          <Sidenav/>
+          <Maindiv/>
+        </div>
       </div>
-      
-    </div>
+    </Fragment>
   )
 }
 

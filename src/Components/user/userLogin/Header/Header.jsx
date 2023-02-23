@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import applogo from "../../../../Assets/user/userSignup/Cineawe.png"
 import {Link} from 'react-router-dom'
 
 function Header() {
   return (
+    <Fragment>
     <div >
       <div className="flex justify-between">
         <div className="appLogo">
@@ -15,6 +16,7 @@ function Header() {
         </div>
       </div>
     </div>
+    </Fragment>
   )
 }
 

@@ -14,6 +14,7 @@
     h-48
     w-48
     ml-16
+    max-sm:contents
 }
 
 .formdivOwner{
@@ -27,25 +28,28 @@
 
 .formdivOwner{
     height: auto;
-    background-color: #948e8ea6;
     border: solid;
     @apply
+    bg-[#020000e6]
+    border-2
+   border-slate-900
     sm:w-96
     w-full
-    mr-16
+    
 }
 
 .signupInputowner{
     width: 90%;
     height: 2.5rem;
-    border-radius: 5px;
-    background-color:rgb(19, 18, 18);
-    border: none;
-    border-bottom: 3px;
-    color: rgb(184, 177, 177);
+   
     @apply
     mt-10
     ml-1
     pl-4
     font-sans
+    rounded-md
+    bg-transparent
+    text-white
+    border-b-2
+   font-thin
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {useNavigate} from 'react-router-dom'
 import applogo from "../../../Assets/user/userSignup/Cineawe.png";
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,8 @@ function Header() {
         navigate('/login')
     }
   return (
+    <Fragment>
+
     <div>
         <div className='headerdiv flex'>
             <div className='w-1/4'>
@@ -42,6 +44,7 @@ function Header() {
         </div>
      
     </div>
+    </Fragment>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { toast } from "react-toast";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -58,6 +58,7 @@ function Signup() {
   
 
   return (
+    <Fragment>
     <div className="divwrapper grid lg:grid-cols-1">
       <div className="flex justify-between">
         <div className="appLogo">
@@ -105,7 +106,7 @@ function Signup() {
                   type="text"
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)}
-                ></input>
+                  ></input>
               </div>
               <input
                 className="signupInput "
@@ -114,7 +115,7 @@ function Signup() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-              ></input>
+                ></input>
               <input
                 className="signupInput "
                 placeholder="Phone"
@@ -157,6 +158,7 @@ function Signup() {
         </div>
       </div>
     </div>
+    </Fragment>
   );
 }
 
