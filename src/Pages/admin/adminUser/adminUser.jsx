@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidenav from '../../../Components/admin/adminHome/Includes/Header'
-import ManageUser from '../../../Components/admin/adminHome/userManagement/userManagement'
+import Sidenav from '../../../Components/admin/Includes/Header'
+import ManageUser from '../../../Components/admin/adminUser/userManagement'
 
 function AdminUser() {
   return (

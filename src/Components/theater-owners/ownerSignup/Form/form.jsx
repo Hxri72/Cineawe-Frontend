@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toast'
 import { signupOwner } from '../../../../api_Integration/owner/ownerInstance'
 import '.././../../../stylesheets/theater_owners/ownersSignup.css'
+import Swal from 'sweetalert2'
 
 
 function Form() {
@@ -36,7 +37,16 @@ function Form() {
     const response = await signupOwner(signupData)
     console.log(response)
     if(response.success){
-      
+      Swal.fire({
+        icon:'success',
+        title:'Success!',
+        text:'Signup successfully, Admin want to approve the account, Please wait for the Email,Thankyou!',
+        background:'#171717',
+        confirmButtonColor:'#000000',
+        color:'#AFACAB'
+      })
+    }else{
+      toast.error('User Already exist')
     }
 
   }

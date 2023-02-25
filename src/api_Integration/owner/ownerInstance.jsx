@@ -8,3 +8,12 @@ export const signupOwner = async(payload) => {
         return error.response
     }
 }
+
+export const loginOwner = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/owner',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

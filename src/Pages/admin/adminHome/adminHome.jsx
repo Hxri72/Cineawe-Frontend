@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 
 import '../../../stylesheets/admin/adminHome.css'
-import Sidenav from '../../../Components/admin/adminHome/Includes/Header'
-import Maindiv from '../../../Components/admin/adminHome/Dashboard/Dashboard'
+import Sidenav from '../../../Components/admin/Includes/Header'
+import Maindiv from '../../../Components/admin/adminDashboard/Dashboard'
 
 function AdminHome() {
 

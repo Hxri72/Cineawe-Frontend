@@ -25,7 +25,7 @@ function Form() {
       const response = await postAdminHome(adminData);
       console.log(response.data);
       if (response.success) {
-        navigate("/adminhome");
+        navigate("/admin/adminhome");
         localStorage.setItem("adminToken", response.data);
       } else {
         toast.error(response.message);

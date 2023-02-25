@@ -26,3 +26,12 @@ export const getAllUsers = async () => {
         return error.response
     }
 }
+
+export const getAllOwners = async () => {
+    try {
+        const response = await axiosInstanceAdmin.get("/adminowner")
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

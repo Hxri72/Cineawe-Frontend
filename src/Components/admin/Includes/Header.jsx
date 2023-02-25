@@ -33,22 +33,24 @@ function Sidenav() {
         </div>
 
         <div className="routeButtonsDiv grid justify-items-center w-full text-start h-1/4 gap-2">
-          <div className="route">
-            <Link to={"/adminhome"}>
+          <div className="route cursor-pointer">
+            <Link to={"/admin/adminhome"}>
               <div>
-                <button>Dashboard</button>
+                <span>Dashboard</span>
               </div>
             </Link>
           </div>
 
-          <div className="route">
-            <Link to={"/adminuser"}>
-              <button>User Management</button>
+          <div className="route cursor-pointer">
+            <Link to={"/admin/adminuser"}>
+              <span>User Management</span>
             </Link>
           </div>
 
-          <div className="route">
-            <button>Owners Management</button>
+          <div className="route cursor-pointer">
+            <Link to={"/admin/adminowner"}>
+            <span>Owners Management</span>
+            </Link>
           </div>
           <div className="route">
             <button>Bookings</button>
@@ -57,19 +59,13 @@ function Sidenav() {
             <button>Show Management</button>
           </div>
           <div className="route">
-            <button>Show Management</button>
+            <button>Movie Management</button>
           </div>
           <div className="route">
-            <button>Show Management</button>
+            <button>Sales Report</button>
           </div>
           <div className="route">
-            <button>Show Management</button>
-          </div>
-          <div className="route">
-            <button>Show Management</button>
-          </div>
-          <div className="route">
-            <button>Show Management</button>
+            <button>Payment</button>
           </div>
         </div>
 
