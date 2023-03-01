@@ -22,7 +22,7 @@ function Signup() {
     phone: phone,
     password: password,
     confirmPassword: confirmPassword,
-    isBlocked:"false"
+    isAdminBlocked:"false"
   };
 
   const handleSubmit = async (e) => {

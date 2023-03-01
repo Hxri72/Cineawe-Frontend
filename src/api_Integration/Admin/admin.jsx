@@ -35,3 +35,22 @@ export const getAllOwners = async () => {
         return error.response
     }
 }
+
+export const userExist = async (payload) => {
+    try {
+        const response = await axiosInstanceAdmin.post("/block-user",(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+//User unblock
+export const unblockUser = async(payload)=>{
+    try {
+        const response = await axiosInstanceAdmin.post("/unblock-user",(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

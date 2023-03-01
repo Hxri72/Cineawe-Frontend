@@ -28,7 +28,7 @@ export const LoginUser = async (payload) => {
     }
 }
 
-//Current user find
+//Current user find 
 export const getCurrentUser = async(payload)=>{
     try {
         const response = await axiosInstanceUser.post("/getcurrentuser",(payload))
@@ -37,3 +37,5 @@ export const getCurrentUser = async(payload)=>{
         return error.response
     }
 }
+
+
