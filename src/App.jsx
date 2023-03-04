@@ -7,13 +7,16 @@ import './index.css'
 import UserRoute from './routes/user/userRoute'
 import OwnerRoute from './routes/owners/owner'
 import AdminRoute from './routes/admin/adminRoute'
+import Loader from './Pages/loader'
+import { useSelector } from 'react-redux'
 
 function App(){
- 
+  const {loading} = useSelector((state) => state.loaders)
   return (
     <Fragment>
-    <div>
-      {/* <div className='loader-parent'></div> */}
+      {loading && 
+        <Loader/>
+      }
       <BrowserRouter>
       <ToastContainer className='Toast' delay={3000} position='top-center' />
         <Routes>
@@ -25,8 +28,6 @@ function App(){
         </Routes>
         
       </BrowserRouter>
-      
-    </div>
     </Fragment>
   );
 }

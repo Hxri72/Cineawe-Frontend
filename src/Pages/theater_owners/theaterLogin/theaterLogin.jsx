@@ -8,9 +8,11 @@ import { Fragment } from 'react'
 function TheaterLogin() {
   return (
   <Fragment>
-    <div className='divwrapperOwner'>
-      <Header/>
-      <Form/>
+    <div className='w-full h-full p-4'>
+      <div className='divwrapperOwner'>
+        <Header/>
+        <Form/>
+      </div>
     </div>
   </Fragment>
   )

@@ -13,11 +13,10 @@
     
 }
 .divwrapper{
-    width: 98%;
+    width: 100%;
    @apply bg-slate-900
     rounded-3xl
     p-4
-    m-4
     h-full
 }
 
@@ -104,7 +103,5 @@ button:focus {
     rounded-md
 }
 
-.loader-parent{
 
-}
 

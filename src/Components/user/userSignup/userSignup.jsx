@@ -4,6 +4,8 @@ import { toast } from "react-toast";
 import { Link, useNavigate } from "react-router-dom";
 import applogo from "../../../Assets/user/userSignup/Cineawe.png"
 import { signupOTP } from "../../../api_Integration/User/users";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../../../Redux/loadersSlice";
 
 function Signup() {
   const [firstname, setFirstname] = useState("");
@@ -13,7 +15,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
 
   const signupData = {
     firstname: firstname,
@@ -44,12 +46,11 @@ function Signup() {
       if (password !== confirmPassword) {
         return toast.warn("Password not matched");
       }
-
+      dispatch(showLoading())
       const response = await signupOTP()  
       const otp = response.data
-
       navigate('/otp',{state:{signupData,otp}})
-      
+      dispatch(hideLoading())
     } catch (error) {
       toast.error("failed");
     }

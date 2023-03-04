@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { getAllOwners } from '../../../api_Integration/Admin/admin';
+import { getAllOwners, ownerStatusChange } from '../../../api_Integration/Admin/admin';
 
 function ManageOwner() {
 
@@ -7,9 +7,8 @@ function ManageOwner() {
 
     useEffect(() => {
         const fetchOwner = async () => {
-            console.log('working')
           const response = await getAllOwners();
-          console.log(response);
+          
           if (response.success) {
             setOwners(response.data);
             
@@ -19,6 +18,23 @@ function ManageOwner() {
         };
         fetchOwner();
       }, []);
+
+      //dropdown
+      const options = ['Pending','Approved', 'Blocked'];  
+
+      const handleOptionChange = async(event) => {
+        const ownerStatus = {
+          ownerStatus : event.target.value,
+          ownerId : event.target.id
+        }
+        const response = await ownerStatusChange(ownerStatus);
+        if(response.success){
+          window.location.reload();
+        }else{
+          console.log('error')
+        }
+        
+       };
 
   return (
     <Fragment>
@@ -45,7 +61,17 @@ function ManageOwner() {
                         <td className='text-center'>{index + 1}</td>
                         <td className='text-center'>{owner.fullname}</td>
                         <td className='text-center'>{owner.email}</td>
-                        <td className='text-center'><button className='w-20 h-10 bg-red-600 rounded-md text-slate-300'>Blocked</button></td>
+                        <td className='text-center'>                     
+                            <div className='text-black'>                            
+                            <select className='rounded-md bg-slate-300' id={owner._id} value={owner.isAdminStatus} onChange={handleOptionChange}>
+                              {options.map((option) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                              ))}
+                            </select>
+                            </div>
+                        </td>
                     </tr>
                     ))}
                 </tbody>

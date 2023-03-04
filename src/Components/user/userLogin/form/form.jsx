@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate} from "react-router-dom";
 import { toast } from "react-toast";
 import { LoginUser } from "../../../../api_Integration/User/users";
+import { hideLoading, showLoading } from "../../../../Redux/loadersSlice";
 import { setUser } from "../../../../Redux/usersSlice";
 
 
@@ -21,6 +22,7 @@ function Form() {
 
   const handleSubmit = async(e)=> {
       e.preventDefault()
+      dispatch(showLoading());
       if(email === ""){
         return toast.warn('Email is required')
       }else if(password === ""){
@@ -39,14 +41,15 @@ function Form() {
           color: 'ffffff'
         })
       }
+      dispatch(hideLoading())
   }
   return (
     <Fragment>
 
     <div>
-      <div className="grid lg:flex justify-between">
-        <div className="flex -ml-24 mt-16">
-          <div className="cinedivonelog w-60 ">
+      <div className="grid lg:flex justify-center">
+        <div className="flex -ml-24 max-lg:ml-0 mt-16 max-sm:mt-0">
+          <div className="cinedivonelog w-60  ">
             <img
               className="rounded-3xl"
               src="https://www.indiewire.com/wp-content/uploads/2019/12/JokerPoster1200_5ca3c435318d42.29270548.jpg?w=800"
@@ -62,7 +65,7 @@ function Form() {
           </div>
         </div>
 
-        <div className="formDiv mt-20 sm:mt-20 md:mt-20 lg:-mt-20">
+        <div className="formDiv-userLogin mt-20 sm:mt-20 md:mt-20 lg:-mt-20 max-md:mx-auto ">
           <h3 className="text-2xl">Welcome Back!</h3>
           <small>Please enter the Email and Password</small>
           <p></p>

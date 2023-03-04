@@ -19,7 +19,7 @@ function Form() {
     email:email,
     password:password,
     confirmPassword:confirmPassword,
-    isAdminApprove:"false"
+    isAdminStatus:"Pending"
   }
 
   const handleSignup = async(e) => {

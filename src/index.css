@@ -29,9 +29,15 @@ input:-webkit-autofill{
   @apply
   bg-black
   z-50
-  opacity-70
+  opacity-90
   w-full
   h-screen
+}
+
+.loader{
+  display: flex;
+  justify-content: center;
+  margin-top: 15rem;
 }
 
 .app-container {
@@ -68,3 +74,9 @@ form td:last-child {
   --animate-duration: 0.07s;
 }
 
+.coreDiv{
+  @apply
+  w-full
+  h-full
+  p-4
+}

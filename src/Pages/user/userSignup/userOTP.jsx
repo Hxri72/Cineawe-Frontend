@@ -6,9 +6,11 @@ import '../../../stylesheets/user/userOtp.css'
 function userOTP() {
   return (
     <Fragment>
-      <div className='divwrapper'>
-        <Header/>
-        <OtpForm/>
+      <div className='coreDiv'>
+        <div className='divwrapper'>
+          <Header/>
+          <OtpForm/>
+        </div>
       </div>
     </Fragment>
   )

@@ -1,10 +1,12 @@
-import React,{Fragment, useEffect} from "react";
+import React,{Fragment, useEffect, useRef} from "react";
 import { toast } from "react-toast";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import {signupUser} from '../../../api_Integration/User/users'
 import { signupOTP } from "../../../api_Integration/User/users";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../../../Redux/loadersSlice";
 
 
 function OtpForm(props) {
@@ -17,11 +19,16 @@ function OtpForm(props) {
   const [num4,setNum4] = useState("")
   const [resendData,setResendData] = useState("")
 
+  const firstNameRef = useRef(null)
+  const lastNameRef = useRef(null)
+  const thirdNameRef = useRef(null)
+  const fourthNameRef = useRef(null)
+
   const navigate = useNavigate()
   const location = useLocation()
   const userDetails = location.state.signupData
   const signupOtp = location.state.otp
-
+  const dispatch = useDispatch();
   const inputData = {
     num:num1+num2+num3+num4
   }
@@ -35,15 +42,19 @@ function OtpForm(props) {
       if(inputData.num!==""){
         if(signupOtp===inputData.num || resendData===inputData.num){
           e.preventDefault()
+          dispatch(showLoading())
           const response = await signupUser(userDetails);
+
           if (response.success) {
             toast.success("User Created successfuly");
             setTimeout(() => {
               navigate('/');
+              dispatch(hideLoading())
             }, 3000);
           } else {
             toast.error("Failed");
           }
+          
         }else{
           toast.error('Incorrect OTP')
           e.preventDefault()
@@ -52,7 +63,7 @@ function OtpForm(props) {
         toast.error('Incorrect OTP')
         e.preventDefault()
       }
-        
+      
     } catch (error) {
       console.log(error.message)
     }
@@ -62,6 +73,7 @@ function OtpForm(props) {
   const resendOtp = async(e)=>{
     setMinutes(0);
     setSeconds(59);
+    dispatch(showLoading())
     const response = await signupOTP() 
     setResendData(response.data)
     if(response.success){
@@ -69,6 +81,39 @@ function OtpForm(props) {
     }else{
       toast.error('OTP resend is failed')
       navigate('/signup')
+    }
+    dispatch(hideLoading())
+  }
+
+  const handleFirstInput = (event) => {
+      setNum1(event.target.value)
+      if(event.target.value.length>0){
+        lastNameRef.current.focus()
+      }
+  }
+
+  const handleSecondInput = (event) => {
+    setNum2(event.target.value)
+    if(event.target.value.length>0){
+      thirdNameRef.current.focus()
+    }else{
+      firstNameRef.current.focus()
+    }
+  }
+
+  const handelThirdInput = (event) => {
+    setNum3(event.target.value)
+    if(event.target.value.length>0){
+      fourthNameRef.current.focus()
+    }else{
+      lastNameRef.current.focus()
+    }
+  }
+
+  const handleFourthInput = (event) => {
+    setNum4(event.target.value)
+    if(event.target.value.length<=0){
+      thirdNameRef.current.focus()
     }
   }
 
@@ -110,7 +155,9 @@ function OtpForm(props) {
             type='text' 
             name='num1'
             id="field1"
-            onChange={(e)=>setNum1(e.target.value)}>
+            onChange={handleFirstInput}
+            ref={firstNameRef}
+            >
             </input>
             <input 
             className="otpInput text-center" 
@@ -118,7 +165,9 @@ function OtpForm(props) {
             type='number' 
             name='num2'
             id="field2"
-            onChange={(e)=>setNum2(e.target.value)}>
+            onChange={handleSecondInput}
+            ref={lastNameRef}
+            >
             </input>
             <input 
             className="otpInput text-center" 
@@ -126,7 +175,9 @@ function OtpForm(props) {
             type='number' 
             name="num3"
             id="field3"
-            onChange={(e)=>setNum3(e.target.value)}>
+            onChange={handelThirdInput}
+            ref={thirdNameRef}
+            >
             </input>
             <input 
             className="otpInput text-center" 
@@ -134,7 +185,9 @@ function OtpForm(props) {
             type='number' 
             name="num4"
             id="field3"
-            onChange={(e)=>setNum4(e.target.value)}>
+            onChange={handleFourthInput}
+            ref={fourthNameRef}
+            >
             </input>
           <br/>
           </div>

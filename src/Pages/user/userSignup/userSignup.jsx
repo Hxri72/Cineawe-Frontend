@@ -8,8 +8,10 @@ import Signup from '../../../Components/user/userSignup/userSignup'
 function signup() {
   return (
     <Fragment>
-      <div className='content-wrapper'>
-        <Signup/>
+      <div className='coreDiv'>
+        <div className='content-wrapper'>
+          <Signup/>
+        </div>
       </div>
     </Fragment>
   )

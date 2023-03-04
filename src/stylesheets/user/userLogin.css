@@ -6,6 +6,7 @@
     mb-14
     rotate-12
     rounded-3xl
+    max-sm:ml-40
 }
 
 .cinedivtwolog{
@@ -16,4 +17,49 @@
     mb-14
     rotate-12
     rounded-3xl
+}
+
+@media screen and (max-width:700px) {
+    .user-Credential-Buttons{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:1300px){
+    .cinedivtwolog{
+        display: none;
+    }
+}
+
+@media screen and (max-width:590px){
+    .divwrapper-userLogin{
+        width: 144%;
+    }
+}
+
+.divwrapper-userLogin{
+   @apply bg-slate-900
+   w-full
+   max-sm:w-fit
+    rounded-3xl
+    p-4
+    h-full
+}
+
+.formDiv-userLogin{
+    @apply
+    bg-slate-500
+    h-96
+    ml-24
+    p-10
+    mb-10
+    mr-10
+    rounded-xl
+    max-sm:ml-12
+}
+
+.formDiv-userLogin{
+    width: 450px;
+    height: auto;
 }

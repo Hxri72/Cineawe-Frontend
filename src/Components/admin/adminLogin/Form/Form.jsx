@@ -39,7 +39,7 @@ function Form() {
     <Fragment>
       <div>
         <div className="grid lg:flex justify-end">
-          <div className="formDiv mt-20 sm:mt-20 md:mt-20 lg:-mt-20">
+          <div className="formDivAdmin mt-20 sm:mt-20 md:mt-20 lg:-mt-20">
             <h3 className="text-2xl">Welcome Back!</h3>
             <small>Please enter the Username and Password</small>
             <p></p>

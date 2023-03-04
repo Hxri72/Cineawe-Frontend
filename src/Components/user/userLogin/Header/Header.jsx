@@ -10,7 +10,7 @@ function Header() {
         <div className="appLogo">
           <img src={applogo} alt="applogo" />
         </div>
-        <div>
+        <div className='user-Credential-Buttons '>
           <Link to="/signup"><button className="signupBtn mr-6 mt-9">Signup</button></Link>
           <Link to="/login"><button className="signupBtn mr-10 mt-9">Login</button></Link>
         </div>

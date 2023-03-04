@@ -4,13 +4,44 @@
     w-72
 }
 
-.div-wrapper{
-    width: 98%;
+.div-wrapperAdmin{
+    width: 100%;
     background-image: url('../../Assets/admin/adminLogin/black-adam-superhero-movie-character-poster-with-black-fire-figure-in-front-of-black-background-wallpaper-5120x2880_55.jpg');
     background-size: 100% 120%;
-    @apply bg-slate-900
+    @apply
+     bg-slate-900
      rounded-3xl
      p-4
-     m-4
      h-full
+     max-sm:bg-none     
+}
+
+
+@media screen and (max-width:1024px) {
+    .div-wrapperAdmin{
+        background-size: 100% 100%;
+    }
+
+    .applogo{
+        @apply
+        ml-7
+    }
+}
+
+.formDivAdmin{
+    width: 450px;
+    height: auto;
+    @apply
+    max-sm:w-full
+    sm:ml-24
+}
+
+.formDivAdmin{
+    @apply
+    bg-slate-500
+    h-96
+    p-10
+    mb-10
+    mr-10
+    rounded-xl
 }

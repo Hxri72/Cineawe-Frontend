@@ -54,3 +54,13 @@ export const unblockUser = async(payload)=>{
         return error.response
     }
 }
+
+//ownerStatus Changing
+export const ownerStatusChange = async(payload)=>{
+    try {
+        const response = await axiosInstanceAdmin.post('/owner-status-change',(payload))
+        return response.data;
+    } catch (error) {
+        return error.response;
+    }
+}

@@ -6,9 +6,11 @@ import '../../../stylesheets/user/userLogin.css'
 function Login() {
   return (
     <Fragment>
-      <div className='divwrapper'>
-        <Header/>
-        <Form/>
+      <div className='coreDiv'>
+        <div className='divwrapper-userLogin'>
+          <Header/>
+          <Form/>
+        </div>
       </div>
     </Fragment>
   )

@@ -7,9 +7,11 @@ import '../../../stylesheets/admin/adminLogin.css'
 function AdminLogin() {
   return (
     <Fragment>
-      <div className='div-wrapper'>
-        <Header/>
-        <Form/>
+      <div className='coreDiv'>
+        <div className='div-wrapperAdmin'>
+          <Header/>
+          <Form/>
+        </div>
       </div>
     </Fragment>
   )
