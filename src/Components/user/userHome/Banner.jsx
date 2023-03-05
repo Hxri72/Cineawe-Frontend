@@ -1,8 +1,22 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { Fragment } from 'react'
+import { getBannerMovie } from '../../../api_Integration/Movie/Movie'
 import bannerImage from '../../../Assets/user/userHome/movieBanner.jpg'
+import {imageUrl} from '../../../constants/constants'
 
 function Banner() {
+  const [bannerMovie,setBannerMovie] = useState()
+
+  useEffect(()=>{
+      const fetchdata = async()=>{
+        const response = await getBannerMovie()
+        setBannerMovie(response.results[13])
+      }
+      fetchdata();
+  },[])
+
   return (
     <Fragment>
     <div>

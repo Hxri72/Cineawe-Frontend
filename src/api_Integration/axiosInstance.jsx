@@ -11,3 +11,7 @@ export const axiosInstanceUser = axios.create({
 export const axiosInstanceOwner = axios.create({
     baseURL : 'http://localhost:5000/api/owner'
 })
+
+export const axiosInstanceMovie = axios.create({
+    baseURL : 'https://api.themoviedb.org/3'    
+})
