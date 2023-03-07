@@ -1,0 +1,39 @@
+.dashboardDiv{
+    @apply
+    w-full
+    h-auto
+    bg-slate-200
+    rounded-3xl
+}
+
+.dashboardHead{
+    @apply
+    flex
+    justify-start
+    p-10
+}
+
+.dashboardMain{
+    @apply
+    flex
+    justify-start
+    pl-12
+}
+
+.revenueDiv{
+    @apply
+    w-60
+    h-32
+    bg-gray-900
+    mr-16
+    rounded-xl
+}
+
+.barGraphDiv{
+    @apply
+    w-96
+    h-72
+    bg-gray-300
+    m-11
+    rounded-xl
+}

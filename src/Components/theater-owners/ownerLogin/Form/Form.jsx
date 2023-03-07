@@ -1,9 +1,10 @@
 import React, { useState,Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toast";
 import { loginOwner } from "../../../../api_Integration/owner/ownerInstance";
 
 function Form() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,7 +17,8 @@ function Form() {
     e.preventDefault()
     const response = await loginOwner(loginData)
     if(response.success){
-      toast.success('Owner logged in successfully')
+      localStorage.setItem("ownerToken",response.data)
+      navigate('/owner/owner-Home')
     }else{
       toast.error(response.message)
     }

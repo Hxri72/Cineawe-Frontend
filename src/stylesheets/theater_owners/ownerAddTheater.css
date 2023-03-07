@@ -1,0 +1,49 @@
+.addTheaterFormDiv{
+    @apply
+    w-3/4
+    h-96
+    bg-slate-300
+    mt-12
+    rounded-md
+}
+
+.partOneInput{
+    @apply
+    flex
+    p-16
+    justify-around
+    
+}
+
+.partTwoInput{
+    @apply
+    flex
+    justify-around
+    px-16
+}
+
+.inputFieldAddTheaters{
+    @apply
+    h-10
+    rounded-md
+    p-4 
+}
+
+.addTheatersButtonDiv{
+    @apply
+    p-16
+    flex
+    justify-end
+}
+
+.addTheatersButton{
+    @apply
+    border-2
+    w-32
+    p-2
+    border-slate-700
+    rounded-lg
+    cursor-pointer
+    bg-slate-400
+    hover:bg-slate-500
+}

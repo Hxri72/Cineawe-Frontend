@@ -1,0 +1,12 @@
+.addShowDiv{
+    @apply
+    flex
+    justify-end
+}
+
+.gapDiv{
+    @apply
+    h-10
+    w-full
+    
+}

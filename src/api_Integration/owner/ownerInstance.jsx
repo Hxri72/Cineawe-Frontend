@@ -17,3 +17,21 @@ export const loginOwner = async(payload) => {
         return error.response
     }
 }
+
+export const addTheater = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/add-theater',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getTheaters = async() => {
+    try {
+        const response = await axiosInstanceOwner.get('/get-theaters')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

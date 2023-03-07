@@ -1,0 +1,14 @@
+.addShowsCoreDiv{
+    @apply
+    flex
+    justify-center
+}
+
+.addShowsFormDiv{
+    @apply
+    w-3/4
+    h-96
+    bg-slate-300
+    my-28
+    rounded-lg
+}
