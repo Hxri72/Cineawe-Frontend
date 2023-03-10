@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
-import { getTheaters } from '../../../api_Integration/owner/ownerInstance'
+import {  deleteTheater, getTheaters } from '../../../api_Integration/owner/ownerInstance'
 import '../../../stylesheets/theater_owners/ownerTheaterManagement.css'
+import Swal from 'sweetalert2'
 
 function TheaterManage() {
 
@@ -22,6 +23,41 @@ function TheaterManage() {
 
   const handleAddTheater = () => {
       navigate('/owner/owner-add-theater')
+  }
+
+  const handleEditButton = (theaterId) => {
+    try {
+      console.log(theaterId);
+      navigate('/owner/owner-edit-theater',{state:{theaterId:theaterId}})
+    } catch (error) {
+      return error.message
+    }
+  }
+
+  const handleDeleteButton = async(theaterId) => {
+    try {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You are Deleting a Theater!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete!'
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          const response = await deleteTheater({theaterId})
+          if(response.success){
+            Swal.fire(response.message).then(()=>{
+              setTheaters(response.data)
+            })
+          }else{
+            Swal.fire(response.message)
+          }
+        }})
+    } catch (error) {
+      return error.message
+    }
   }
 
   return (
@@ -57,10 +93,10 @@ function TheaterManage() {
                 <td>{theater.address}</td>
                 <td>{theater.phone}</td>
                 <td>{theater.totalSeats}</td>
-                <td><span className='cursor-pointer'>Edit</span></td>
-                <td>Delete</td>
+                <td ><span className='cursor-pointer border-2 border-slate-400 bg-slate-400 py-1 px-5 rounded-md' onClick={()=>handleEditButton(theater._id)}>Edit</span></td>
+                <td><span className='cursor-pointer border-2 border-slate-400 bg-slate-400 py-1 px-4 rounded-md' onClick={()=>handleDeleteButton(theater._id)}>Delete</span></td>
               </tr>
-              ))} 
+              ))}
             </tbody>
           </table>
       </div>

@@ -36,10 +36,11 @@ function Posters() {
       <div>
         <h3 className='text-white font-semibold text-xl p-4'>English Movies</h3>
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
+          
           {englishMovies.map((obj)=>
-
-            <img className='postersHome' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
-          )}
+              <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
+              )}
+          
           
         </div>
       </div>
@@ -65,7 +66,7 @@ function Posters() {
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
             {malayalamMovies.map((obj)=>
             
-            <img className='postersHome' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
+            <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
             )}
 
         </div>
@@ -75,7 +76,7 @@ function Posters() {
         <h3 className='text-white font-semibold text-xl p-4'>Tamil Movies</h3>
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
           {TamilMovies.map((obj) =>
-            <img className='postersHome' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
+            <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
             )
           }
         </div>

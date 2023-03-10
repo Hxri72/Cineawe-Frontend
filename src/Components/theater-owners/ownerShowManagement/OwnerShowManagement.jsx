@@ -1,8 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { getTheaters } from '../../../api_Integration/owner/ownerInstance'
 import '../../../stylesheets/theater_owners/ownerShowManagement.css'
 
-function ShowManage() {
+function ShowManage(props) {
+
+  const navigate = useNavigate()
+  const [theaters,setTheaters] = useState([])
+
+  const handleShowButton = (theaterId) => {
+    navigate('/owner/owner-show-details',{state:{theaterId}})
+  }
+
+  useEffect(()=>{
+    const fetchData = async() => {
+      const response = await getTheaters()
+      console.log(response) 
+      if(response.success){
+        setTheaters(response.data)
+      }
+    }
+    fetchData();
+  },[])
+
   return (
     <div className='mainDivOwner'>
       <div className='dashboardHead'>
@@ -23,18 +45,29 @@ function ShowManage() {
             <tr>
               <th>No</th>
               <th>Theater Name</th>
+              <th>Contact</th>
               <th></th>
             </tr>
           </thead>
             
           <tbody>
-          <tr>
-              <td> </td>
-              <td> </td>
+            {theaters.map((theater,index)=>(
+          <tr>           
+              <td className='text-center'>{index + 1} </td>
+              <td className='text-center'>{theater.theaterName} </td>
+              <td className='text-center'>{theater.phone}</td>
+              
               <div className='flex justify-around'>
-              <td><button className='border-2 border-slate-800 bg-slate-300 w-24 rounded-md '>Shows</button></td>
+                  <td>
+                  
+                    <button className='border-2 border-slate-800 bg-slate-300 w-24 rounded-md ' onClick={()=>handleShowButton(theater._id)}>Shows</button>
+                 
+                  </td>
               </div>
+              
             </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>

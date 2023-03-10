@@ -35,3 +35,57 @@ export const getTheaters = async() => {
         return error.response
     }
 }
+
+export const postShowData = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/add-shows',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getShowDetails = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/get-show-details',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const deleteShow = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/delete-show-details',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const editTheater = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/edit-theater-details',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const fetchTheaterDetails = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/get-theater-details',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const deleteTheater = async (payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/delete-theater',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

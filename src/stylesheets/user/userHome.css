@@ -93,3 +93,10 @@
     text-slate-300
     pt-10
 }
+
+.headerDown{
+    @apply
+    w-full 
+    h-12 
+    bg-black
+}

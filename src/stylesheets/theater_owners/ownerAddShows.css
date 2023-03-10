@@ -12,3 +12,8 @@
     my-28
     rounded-lg
 }
+
+.addShowInput{
+    @apply
+    rounded-lg
+}

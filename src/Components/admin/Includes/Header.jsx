@@ -52,14 +52,18 @@ function Sidenav() {
             <span>Owners Management</span>
             </Link>
           </div>
+          <div className="route cursor-pointer">
+            <Link to={"/admin/admin-theater"}>
+              <span>Theater Management</span>
+            </Link>
+          </div>
+          <div className="route cursor-pointer">
+            <Link to={"/admin/admin-shows"}>
+              <span>Show Management</span>
+            </Link>
+          </div>
           <div className="route">
             <button>Bookings</button>
-          </div>
-          <div className="route">
-            <button>Show Management</button>
-          </div>
-          <div className="route">
-            <button>Movie Management</button>
           </div>
           <div className="route">
             <button>Sales Report</button>

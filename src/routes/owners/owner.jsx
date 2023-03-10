@@ -10,6 +10,8 @@ import TheaterManagement from '../../Pages/theater_owners/ownerTheaterManagement
 import OwnerAddTheater from '../../Pages/theater_owners/ownerTheaterManagement/ownerAddTheater'
 import OwnerShowManagement from '../../Pages/theater_owners/ownerShowManagement/OwnerShowManagement'
 import OwnerAddShow from '../../Pages/theater_owners/ownerAddShow/OwnerAddShow'
+import OwnerShowDetails from '../../Pages/theater_owners/ownerShowManagement/OwnerShowDetails'
+import OwnerEditTheater from '../../Pages/theater_owners/ownerEditTheater/OwnerEditTheater'
 
 
 function OwnerRoute() {
@@ -23,6 +25,8 @@ function OwnerRoute() {
         <Route path='/owner-add-theater' element={<ProtectedRouteOwner><OwnerAddTheater/></ProtectedRouteOwner>}/>
         <Route path='/owner-show-management' element={<ProtectedRouteOwner><OwnerShowManagement/></ProtectedRouteOwner>}/>
         <Route path='/owner-add-show' element={<ProtectedRouteOwner><OwnerAddShow/></ProtectedRouteOwner>}/>
+        <Route path='/owner-show-details' element={<ProtectedRouteOwner><OwnerShowDetails/></ProtectedRouteOwner>}/>
+        <Route path='/owner-edit-theater' element={<ProtectedRouteOwner><OwnerEditTheater/></ProtectedRouteOwner>}/>
       </Routes>
     </Fragment>
   )

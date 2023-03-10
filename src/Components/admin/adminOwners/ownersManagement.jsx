@@ -43,8 +43,8 @@ function ManageOwner() {
         <div className='mainContent'>
             <div className='text-white p-12 text-2xl'>
                 <h1>Theater Owners</h1>
-                
             </div>
+
             <table className='text-white'>
                 <thead>
                     <tr>
@@ -62,8 +62,8 @@ function ManageOwner() {
                         <td className='text-center'>{owner.fullname}</td>
                         <td className='text-center'>{owner.email}</td>
                         <td className='text-center'>                     
-                            <div className='text-black'>                            
-                            <select className='rounded-md bg-slate-300' id={owner._id} value={owner.isAdminStatus} onChange={handleOptionChange}>
+                            <div className='text-white'>                            
+                            <select className='rounded-md bg-slate-800' id={owner._id} value={owner.isAdminStatus} onChange={handleOptionChange}>
                               {options.map((option) => (
                               <option key={option} value={option}>
                                 {option}

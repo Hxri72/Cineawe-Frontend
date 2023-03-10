@@ -39,7 +39,16 @@ function Header() {
             </div>
             
         </div>
-        <div>
+        <div className='headerDown'>
+            <div className='insideItems flex justify-end py-3'>
+                <h1 className='text-slate-200 mr-10 font-sans font-semibold'>Home</h1>
+                <h1 className='text-slate-200 font-semibold'>List your bookings</h1>
+
+                <h1>Home</h1>
+
+                <h1>Home</h1>
+
+            </div>
 
         </div>
      
