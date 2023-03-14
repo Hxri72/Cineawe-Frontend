@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -26,6 +26,7 @@ function ShowManage(props) {
   },[])
 
   return (
+    <Fragment>
     <div className='mainDivOwner'>
       <div className='dashboardHead'>
         <h1 className='text-2xl font-semibold'>Show Management</h1>
@@ -73,6 +74,7 @@ function ShowManage(props) {
       </div>
 
     </div>
+    </Fragment>
   )
 }
 

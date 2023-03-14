@@ -20,7 +20,7 @@ function ManageOwner() {
       }, []);
 
       //dropdown
-      const options = ['Pending','Approved', 'Blocked'];  
+      const options = ['Approved', 'Blocked'];  
 
       const handleOptionChange = async(event) => {
         const ownerStatus = {
@@ -65,7 +65,7 @@ function ManageOwner() {
                             <div className='text-white'>                            
                             <select className='rounded-md bg-slate-800' id={owner._id} value={owner.isAdminStatus} onChange={handleOptionChange}>
                               {options.map((option) => (
-                              <option key={option} value={option}>
+                             <option key={option} value={option}>
                                 {option}
                               </option>
                               ))}

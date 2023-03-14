@@ -30,7 +30,7 @@ function Header() {
             </div>
             <div className='w-1/3 justify-end grid'>
             {user && <div>
-                    <h1 className='text-white mt-2 ml-4'>{user.firstname}</h1>
+                    <h1 className='text-white mt-2 ml-4 font-semibold'>{user.firstname}</h1>
                 </div> }
                 <div>
                     <button className='bg-black hover:bg-slate-800 text-white font-bold py-2 px-4 rounded mt-2 mr-6' onClick={handleLogout}>Logout</button>
@@ -40,13 +40,9 @@ function Header() {
             
         </div>
         <div className='headerDown'>
-            <div className='insideItems flex justify-end py-3'>
-                <h1 className='text-slate-200 mr-10 font-sans font-semibold'>Home</h1>
-                <h1 className='text-slate-200 font-semibold'>List your bookings</h1>
-
-                <h1>Home</h1>
-
-                <h1>Home</h1>
+            <div className='insideItems flex justify-end p-2'>
+                <h1 className='text-gray-400 mr-10 font-sans font-semibold text-sm'>Home</h1>
+                <h1 className='text-gray-400 font-semibold text-sm mr-5'>List your bookings</h1>
 
             </div>
 

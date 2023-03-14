@@ -97,6 +97,6 @@
 .headerDown{
     @apply
     w-full 
-    h-12 
-    bg-black
+    h-10 
+    bg-slate-800
 }

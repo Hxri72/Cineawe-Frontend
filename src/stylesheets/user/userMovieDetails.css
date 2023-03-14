@@ -1,0 +1,6 @@
+.mainDivMovieBanner{
+    @apply
+    w-full
+    h-96
+    bg-slate-500
+}

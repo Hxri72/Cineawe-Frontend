@@ -37,7 +37,7 @@ function ManageUser() {
           'The User is blocked.',
           'success'
         ).then(()=>{
-          window.location.reload()
+          setUsers(response.data)
         })
 
         }
@@ -54,9 +54,8 @@ function ManageUser() {
         'The User is unblocked',
         'success'
       ).then(()=>{
-        window.location.reload()
+        setUsers(response.data)
       })
-      
   }
 
   return (

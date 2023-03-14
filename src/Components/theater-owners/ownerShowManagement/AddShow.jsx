@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useState } from 'react'
 import { getTheaters, postShowData } from '../../../api_Integration/owner/ownerInstance'
 import '../../../stylesheets/theater_owners/ownerAddShows.css'
@@ -71,6 +71,7 @@ function AddShow() {
   },[])
  
   return (
+    <Fragment>
     <div className='mainDivOwner'>
       <div className='addShowsCoreDiv'>
         <div className='addShowsFormDiv'>
@@ -169,6 +170,7 @@ function AddShow() {
         </div>
       </div>
     </div>
+    </Fragment>
   )
 }
 
