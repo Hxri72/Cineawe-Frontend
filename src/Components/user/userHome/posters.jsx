@@ -5,11 +5,17 @@ import { useEffect } from 'react';
 import { getEnglishMovies, getMalayalamMovies, getTamilMovies } from '../../../api_Integration/Movie/Movie';
 import { useState } from 'react';
 import { imageUrl } from '../../../constants/constants';
+import { useNavigate } from 'react-router-dom';
 function Posters() {
 
+  const navigate = useNavigate()
   const [englishMovies,setEnglishMovies] = useState([])
   const [malayalamMovies,setMalayalamMovies] = useState([])
   const [TamilMovies,setTamilMovies] = useState([])
+
+  const handleMovie = (movieId) => {
+    navigate('/movie-details',{state:movieId})
+  }
 
   useEffect(()=>{
     try {
@@ -38,7 +44,7 @@ function Posters() {
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
           
           {englishMovies.map((obj)=>
-              <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
+              <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`} onClick={()=>handleMovie(obj.id)}/>
               )}
           
           
@@ -66,7 +72,7 @@ function Posters() {
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
             {malayalamMovies.map((obj)=>
             
-            <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
+            <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`} onClick={()=>handleMovie(obj.id)}/>
             )}
 
         </div>
@@ -76,7 +82,7 @@ function Posters() {
         <h3 className='text-white font-semibold text-xl p-4'>Tamil Movies</h3>
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
           {TamilMovies.map((obj) =>
-            <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`}/>
+            <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`} onClick={()=>handleMovie(obj.id)}/>
             )
           }
         </div>

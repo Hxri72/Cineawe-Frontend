@@ -1,0 +1,65 @@
+.aboutMovieDetailsMainDiv{
+    height: 700px;
+    @apply
+    w-full
+    bg-slate-200
+}
+
+.aboutDiv{
+    @apply
+    w-full
+    h-24
+    p-14
+}
+
+.aboutHeader{
+    @apply
+    text-xl
+    font-semibold
+
+}
+
+.aboutDescription{
+    @apply
+    text-base
+    my-4
+}
+
+.castDiv{
+    @apply
+    my-10
+}
+
+.castProfile{
+    @apply
+    w-full
+    h-40
+    my-5
+}
+
+.castProfilePicDiv{
+    @apply
+    w-40
+    h-40
+    bg-slate-500
+    rounded-full
+}
+
+.castProfilePic{
+    @apply
+    w-full
+    h-full
+    object-cover
+    rounded-full
+}
+
+.divProfile{
+    @apply
+    mr-20
+}
+
+.aboutCast{
+    @apply
+    text-xl
+    font-semibold
+}

@@ -2,5 +2,54 @@
     @apply
     w-full
     h-96
-    bg-slate-500
+    relative
+}
+
+.moviePosterDiv{
+    @apply
+    absolute
+    w-60
+    h-72
+    ml-10
+    opacity-100
+}
+
+.movieDetailsDiv{
+    @apply
+    absolute
+    w-3/4
+    text-3xl
+    font-semibold
+    opacity-100
+    
+}
+
+.movieInput{
+    @apply
+    text-xl
+    text-white
+
+}
+
+.bookTicketDiv{
+    @apply
+    w-full
+    h-10
+}
+
+.bookTicketButtonDiv{
+    @apply
+    text-lg
+    w-32
+    border-none
+    bg-slate-400
+    py-1
+    rounded-lg
+}
+
+
+.footerDivMovieDetails{
+    @apply
+    w-full
+    h-60
 }

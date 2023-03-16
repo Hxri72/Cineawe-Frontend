@@ -8,7 +8,6 @@ function Header() {
     const dispatch = useDispatch();
     const {user} = useSelector((state) => state.users)
     const navigate = useNavigate()
-  console.log(user);
     const handleLogout = (e) => {
         dispatch(setUser(null))
         localStorage.removeItem("token")

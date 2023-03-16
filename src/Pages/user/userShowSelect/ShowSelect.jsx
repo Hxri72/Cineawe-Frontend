@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react'
 import Footer from '../../../Components/user/userHome/footer'
 import Header from '../../../Components/user/userHome/Header'
-import MovieBanner from '../../../Components/user/userMovieDetals/MovieBanner'
+import ShowDetails from '../../../Components/user/userShowDetails/ShowDetails'
 
-function MovieDetails() {
+function ShowSelect() {
   return (
     <Fragment>
         <div className='maindiv'>
             <Header/>
-            <MovieBanner/>  
+            <ShowDetails/>
             <Footer/>
         </div>
     </Fragment>
   )
 }
 
-export default MovieDetails
+export default ShowSelect

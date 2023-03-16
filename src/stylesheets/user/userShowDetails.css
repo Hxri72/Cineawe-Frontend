@@ -1,0 +1,39 @@
+.mainDivShowDetails{
+    @apply
+    w-full
+    h-96
+    bg-slate-200
+}
+
+.showDetailsTop{
+    @apply
+    w-full
+    h-32
+    bg-gray-500
+}
+
+.movieHead{
+    @apply
+    p-7
+    text-2xl
+    font-semibold
+}
+
+.genreDetails{
+    @apply
+    text-sm
+    font-normal
+    pl-7    
+}
+
+.dateDropdownDiv{
+    @apply
+    p-8
+    ml-8
+}
+
+select:focus {
+    outline: none;
+    border-color: transparent;
+    -webkit-appearance: none;
+  }
