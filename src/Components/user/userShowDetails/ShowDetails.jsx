@@ -37,11 +37,12 @@ function ShowDetails() {
         const response = await getMovieDetails(movieId)
         const responseDate = await getShowDates()
         setShowDate(responseDate.data)
+
         setMovieDetails(response)
     }
     fetchData();
   },[movieId])
-  console.log(shows);
+  console.log(showDate);
   return (
     <Fragment>
       <div className="mainDivShowDetails">
@@ -66,7 +67,7 @@ function ShowDetails() {
               >
                 <option value="">Select a Date</option>
                 {showDate.map((date)=>(
-                <option >{date.showdate}</option>
+                <option >{date}</option>
                 ))}
               </select>
             </div>
