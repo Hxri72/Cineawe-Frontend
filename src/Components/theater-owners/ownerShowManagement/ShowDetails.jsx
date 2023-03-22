@@ -37,6 +37,7 @@ function ShowDetails() {
         const fetchData = async() => {
             const response = await getShowDetails({theaterId})
             if(response.success){
+                console.log(response.data)
                 setShows(response.data)
             }
         }
@@ -72,7 +73,7 @@ function ShowDetails() {
                         <td>{index + 1}</td>
                         <td>{show.showname}</td>
                         <td>{show.moviename}</td>
-                        <td className='flex flex-col'><span>{show.showdate }</span> <span>{ show.showtime}</span></td>
+                        <td className='flex flex-col'><span>{show.startdate } to </span><span>{show.enddate}</span><span>{ show.showtime}</span></td>
                         <td>{show.ticketprice}</td>
                         <td>{show.availableseats}</td>
                         <td>{show.totalseats}</td>

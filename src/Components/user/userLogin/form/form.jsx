@@ -33,7 +33,7 @@ function Form() {
       const {userData,data,message}=response
       if(response.success){
         dispatch(setUser(userData))
-            navigate('/')
+        navigate('/')
         localStorage.setItem("token",data)
       }else{
         toast(message,{

@@ -1,15 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import '../../../stylesheets/user/userMovieDetails.css'
 import '../../../stylesheets/user/userAboutMovie.css'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import { getCastDetails, getMovieDetails } from '../../../api_Integration/Movie/Movie'
 import {imageUrl} from '../../../constants/constants'
-import { Link } from 'react-router-dom'
+
 
 function MovieBanner() {
 
   const location = useLocation()
   const movieId = location.state
+  const navigate = useNavigate()
 
   const [movieDetails,setMovieDetails] = useState('')
   const [genres,setGenres] = useState([])
@@ -33,6 +34,10 @@ function MovieBanner() {
   const myStyle = {
     backgroundImage: `url(${imageUrl+movieDetails.backdrop_path})`,
     backgroundSize: 'cover',
+  }
+
+  const handleBookTicket = () => {
+    navigate('/show-select',{state:movieId})
   }
 
   return (
@@ -60,9 +65,9 @@ function MovieBanner() {
                   <h1 className='movieInput'>2hr 2mnts</h1>
                 </div>
                 <div className='bookTicketDiv  my-16'>
-                  <Link to={'/show-select'}>
-                  <button className='bookTicketButtonDiv'>Book Ticket</button>
-                  </Link>
+                  
+                  <button className='bookTicketButtonDiv' onClick={()=>handleBookTicket()}>Book Ticket</button>
+                  
                 </div>
                 </div>
               </div>

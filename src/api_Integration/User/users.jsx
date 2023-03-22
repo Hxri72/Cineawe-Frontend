@@ -38,4 +38,23 @@ export const getCurrentUser = async(payload)=>{
     }
 }
 
+//get the showsDate
+export const getShowDates = async()=>{
+    try{
+        const response = await axiosInstanceUser.get('/get-show-dates')
+        return response.data
+    }catch(error){
+        return error.response
+    }
+}
+
+export const getShows = async(payload)=>{
+    try {
+       const response = await axiosInstanceUser.post('/get-shows',(payload)) 
+       return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
 

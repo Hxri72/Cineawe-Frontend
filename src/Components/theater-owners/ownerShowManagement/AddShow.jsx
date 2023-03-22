@@ -1,46 +1,52 @@
-import React, { Fragment, useEffect } from 'react'
-import { useState } from 'react'
-import { getTheaters, postShowData } from '../../../api_Integration/owner/ownerInstance'
-import '../../../stylesheets/theater_owners/ownerAddShows.css'
-import Swal from 'sweetalert2'
+import React, { Fragment, useEffect } from "react";
+import { useState } from "react";
+import {
+  getTheaters,
+  postShowData,
+} from "../../../api_Integration/owner/ownerInstance";
+import "../../../stylesheets/theater_owners/ownerAddShows.css";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
+import { getMoviename } from "../../../api_Integration/Movie/Movie";
+import { useSelector } from "react-redux";
 
 function AddShow() {
-  const [theaters,setTheaters] = useState([])
-  const navigate = useNavigate()
-  
-  const [theatername,setTheatername] = useState('')
-  const [showname,setShowname] = useState('')
-  const [moviename,setMoviename] = useState('')
-  const [ticketprice,setTicketprice] = useState('')
-  const [showdate,setShowdate] = useState('')
-  const [showtime,setShowtime] = useState('')
-  const [availableseats,setAvailableseats] = useState('')
-  const [totalseats,setTotalseats] = useState('')
+  const [theaters, setTheaters] = useState([]);
+  const navigate = useNavigate();
+  const { owner } = useSelector((state) => state.owners);
+
+  const [theatername, setTheatername] = useState("");
+  const [showname, setShowname] = useState("");
+  const [ticketprice, setTicketprice] = useState("");
+  const [startDate, setStartdate] = useState("");
+  const [endDate, setEnddate] = useState("");
+  const [showtime, setShowtime] = useState("");
+  console.log(theaters)
+
+  const [inputValue, setInputvalue] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestion, setShowSuggestions] = useState(false);
 
   const showData = {
-    theatername:theatername,
-    showname:showname,
-    moviename:moviename,
-    ticketprice:ticketprice,
-    showdate:showdate,
-    showtime:showtime,
-    availableseats:availableseats,
-    totalseats:totalseats
-  }
+    theatername: theatername,
+    showname: showname,
+    moviename: inputValue,
+    ticketprice: ticketprice,
+    startDate:startDate,
+    endDate:endDate,
+    showtime: showtime,
+  };
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const response = await postShowData({showData})
-    console.log(response)
-    if(response.success){
-      Swal.fire(response.message)
-      .then(()=>{
-        navigate('/owner/owner-show-management')
-      })
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await postShowData({ showData });
+    console.log(response);
+    if (response.success) {
+      Swal.fire(response.message).then(() => {
+        navigate("/owner/owner-show-management");
+      });
     }
-  }
+  };
 
   // function handleDateChange(event) {
   //   const dateValue = event.target.value;
@@ -58,120 +64,174 @@ function AddShow() {
   //   return `${day}/${month}/${year}`;
   // }
 
-  
-
-  useEffect(()=>{
-    const fetchData = async() => {
-      const response = await getTheaters()
-      if(response.success){
-        setTheaters(response.data)
-      }
+  const handleInputChange = async (e) => {
+    try {
+      const value = e.target.value;
+      setInputvalue(value);
+      console.log(value);
+      const response = await getMoviename(value);
+      console.log(response);
+      setSuggestions(response.results);
+      setShowSuggestions(true);
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  useEffect(() => {
+    
+    const fetchData = async () => {
+      
+      const ownerMail = owner.email;
+      const response = await getTheaters({ ownerMail: ownerMail });
+      if (response.success) {
+        setTheaters(response.data);
+      }
+    };
     fetchData();
-  },[])
- 
+  }, []);
+
+  const onSearch = (searchTerm) => {
+    setInputvalue(searchTerm);
+  };
+
+  console.log(showSuggestion);
   return (
     <Fragment>
-    <div className='mainDivOwner'>
-      <div className='addShowsCoreDiv'>
-        <div className='addShowsFormDiv'>
-          <div className='addShowsHead'>
-            <h1 className='text-2xl font-semibold p-7'>Add Shows</h1>
-          </div>
-
-          <form onSubmit={handleSubmit}>
-          <div className='flex justify-around'>
-          
-          <select
-          className='addShowInput'
-          type='text'
-          name='theatername'
-          value={theatername}
-          onChange={(e)=>setTheatername(e.target.value)}
-          >
-            <option value="" disabled selected>Select Theater</option>
-            {theaters.map((theater)=>(
-
-              <option>{theater.theaterName}</option>
-            ))
-            }
-          </select>
-
-          <input
-          className='addShowInput'
-          type='text'
-          name='Showname'
-          placeholder='Showname'
-          value={showname}
-          onChange={(e)=>setShowname(e.target.value)}
-          >
-          </input>
-
-          <input
-          className='addShowInput'
-          type='text'
-          name='moviename'
-          placeholder='Movie Name'
-          value={moviename}
-          onChange={(e)=>setMoviename(e.target.value)}
-          >
-          </input>
-          </div>
-
-          <div className='flex justify-around p-10 -ml-14'>
-            <input
-            className='addShowInput'
-            type='number'
-            name='ticketprice'
-            placeholder='Ticket Price'
-            value={ticketprice}
-            onChange={(e)=>setTicketprice(e.target.value)}
-            ></input>
-            <input
-            className='addShowInput'
-            type='date'
-            name='date'
-            value={showdate}
-            onChange={(e) => setShowdate(e.target.value)}
-            ></input>
-            <input
-            type='time'
-            name='time'
-            value={showtime}
-            onChange={(e)=>setShowtime(e.target.value)}
-            ></input>
-          </div>
-
-          <div className='flex justify-start ml-5'>
-            <input 
-            className='addShowInput'
-            type='text'
-            name='availableseats'
-            placeholder='Available Seats'
-            value={availableseats}
-            onChange={(e)=>setAvailableseats(e.target.value)}
-            ></input>
-            <input
-            className='ml-7'
-            type='text'
-            name='totalseats'
-            placeholder='Total Seats'
-            value={totalseats}
-            onChange={(e)=>setTotalseats(e.target.value)}
-            ></input>
-            
-            
-          </div>
-            <div className='flex justify-evenly my-7'>
-              <button type='submit' className='border-none w-24 h-9 rounded-md bg-slate-800 text-white hover:bg-slate-900'>Add Show</button>
+      <div className="mainDivOwner">
+        <div className="addShowsCoreDiv">
+          <div className="addShowsFormDiv">
+            <div className="addShowsHead">
+              <h1 className="text-2xl font-semibold p-7">Add Shows</h1>
             </div>
-          </form>  
 
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-3 p-5">
+                <div className="px-5 ">
+                  <select
+                    className="addShowInput w-52"
+                    type="text"
+                    name="theatername"
+                    value={theatername}
+                    onChange={(e) => setTheatername(e.target.value)}
+                  >
+                    <option value="" disabled selected>
+                      Select Theater
+                    </option>
+                    {theaters.map((theater) => (
+                      <option>{theater.theaterName}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="">
+                
+                  <input
+                    className="addShowInput"
+                    type="text"
+                    name="Showname"
+                    placeholder="Showname"
+                    value={showname}
+                    onChange={(e) => setShowname(e.target.value)}
+                  ></input>
+                </div>
+
+                <div className="">
+                  <input
+                    className="addShowInput"
+                    type="text"
+                    name="moviename"
+                    placeholder="Movie Name"
+                    autocomplete="off"
+                    value={inputValue}
+                    onChange={(e) => handleInputChange(e)}
+                  ></input>
+
+                  <div className="dropdown absolute">
+                    {suggestions
+                      .filter((item) => {
+                        const searchTerm = inputValue.toLowerCase();
+                        const title = item.title.toLowerCase();
+
+                        return (
+                          searchTerm &&
+                          title.startsWith(searchTerm) &&
+                          title !== searchTerm
+                        );
+                      })
+                      .slice(0, 5)
+                      .map((suggestion) => (
+                        <div
+                          onClick={() => onSearch(suggestion.title)}
+                          className="dropdown-row"
+                          key={suggestion.title}
+                        >
+                          {suggestion.title}
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 p-5">
+
+                <div className="px-5">
+                <input
+                  className="addShowInput w-52"
+                  type="number"
+                  name="ticketprice"
+                  placeholder="Ticket Price"
+                  value={ticketprice}
+                  onChange={(e) => setTicketprice(e.target.value)}
+                ></input>
+                </div>
+
+                <div>
+                <input
+                  className="addShowInput w-56"
+                  type="date"
+                  name="startDate"
+                  value={startDate}
+                  onChange={(e) => setStartdate(e.target.value)}
+                ></input>
+                </div>
+
+                <div>
+                <input
+                  className="addShowInput w-56"
+                  type="date"
+                  name="endDate"
+                  value={endDate}
+                  onChange={(e) => setEnddate(e.target.value)}
+                ></input>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-4 p-5">
+
+                <div className=" px-5">
+                <input
+                  className="addShowInput"
+                  type="time"
+                  name="time"
+                  value={showtime}
+                  onChange={(e) => setShowtime(e.target.value)}
+                ></input>
+                </div>
+
+              </div>
+              <div className="flex justify-evenly my-2">
+                <button
+                  type="submit"
+                  className="border-none w-24 h-9 rounded-md bg-slate-800 text-white hover:bg-slate-900"
+                >
+                  Add Show
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </Fragment>
-  )
+  );
 }
 
-export default AddShow
+export default AddShow;

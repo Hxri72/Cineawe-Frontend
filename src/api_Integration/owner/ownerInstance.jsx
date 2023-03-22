@@ -27,9 +27,9 @@ export const addTheater = async(payload) => {
     }
 }
 
-export const getTheaters = async() => {
+export const getTheaters = async(payload) => {
     try {
-        const response = await axiosInstanceOwner.get('/get-theaters')
+        const response = await axiosInstanceOwner.post('/get-theaters',(payload))
         return response.data
     } catch (error) {
         return error.response
@@ -89,3 +89,4 @@ export const deleteTheater = async (payload) => {
         return error.response
     }
 }
+

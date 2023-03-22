@@ -1,9 +1,12 @@
 import React, { useState,Fragment } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toast";
 import { loginOwner } from "../../../../api_Integration/owner/ownerInstance";
+import { setOwner } from "../../../../Redux/ownerSlice";
 
 function Form() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +20,8 @@ function Form() {
     e.preventDefault()
     const response = await loginOwner(loginData)
     if(response.success){
+      console.log(loginData)
+      dispatch(setOwner(loginData))
       localStorage.setItem("ownerToken",response.data)
       navigate('/owner/owner-Home')
     }else{

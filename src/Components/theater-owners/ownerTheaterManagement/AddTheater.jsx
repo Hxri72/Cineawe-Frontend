@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toast'
 import { addTheater} from '../../../api_Integration/owner/ownerInstance'
@@ -7,20 +8,22 @@ import '../../../stylesheets/theater_owners/ownerAddTheater.css'
 
 function AddTheater() {
   const navigate = useNavigate()
+  const {owner} = useSelector((state)=> state.owners)
 
   const [theatername,setTheaterName] = useState('')
   const [address,setAddress] = useState('')
   const [phone,setPhone] = useState('')
-  const [totalSeats,setTotalSeats] = useState('')
+  const [totalRows,setTotalRows] = useState('')
+  const [totalColumns,setTotalColumns] = useState('')
 
   const theaterData = {
     theaterName:theatername,
     address:address,
     phone:phone,
-    totalSeats:totalSeats
+    totalRows:totalRows,
+    totalColumns:totalColumns,
+    ownerEmail:owner.email
   }
-
-  
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -32,8 +35,6 @@ function AddTheater() {
       toast.error(response.message)
     }
   }
-
-  
 
   return (
     <div className='mainDivOwner'>
@@ -71,12 +72,21 @@ function AddTheater() {
                 onChange={(e)=>setPhone(e.target.value)}
                  ></input>
                 <input 
-                className='inputFieldAddTheaters'
-                placeholder='Available Seats'
-                name='availableseats'
+                className='inputFieldAddSeats'
+                placeholder='Rows'
+                name='theatreRows'
                 type='number'
-                value={totalSeats}
-                onChange={(e)=>setTotalSeats(e.target.value)}
+                value={totalRows}
+                onChange={(e)=>setTotalRows(e.target.value)}
+                 ></input>
+                
+                <input 
+                className='inputFieldAddSeats'
+                placeholder='Columns'
+                name='theatreColumns'
+                type='number'
+                value={totalColumns}
+                onChange={(e)=>setTotalColumns(e.target.value)}
                  ></input>
               </div>
 

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Fragment } from 'react'
 import { getBannerMovie } from '../../../api_Integration/Movie/Movie'
 import bannerImage from '../../../Assets/user/userHome/movieBanner.jpg'
-import {imageUrl} from '../../../constants/constants'
+
 
 function Banner() {
   const [bannerMovie,setBannerMovie] = useState()

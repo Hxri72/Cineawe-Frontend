@@ -20,7 +20,7 @@ function ManageOwner() {
       }, []);
 
       //dropdown
-      const options = ['Approved', 'Blocked'];  
+      const options = ['Pending','Approved', 'Blocked'];  
 
       const handleOptionChange = async(event) => {
         const ownerStatus = {

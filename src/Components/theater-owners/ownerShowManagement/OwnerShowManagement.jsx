@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { getTheaters } from '../../../api_Integration/owner/ownerInstance'
 import '../../../stylesheets/theater_owners/ownerShowManagement.css'
@@ -9,6 +10,7 @@ function ShowManage(props) {
 
   const navigate = useNavigate()
   const [theaters,setTheaters] = useState([])
+  const {owner} = useSelector((state)=>state.owners)
 
   const handleShowButton = (theaterId) => {
     navigate('/owner/owner-show-details',{state:{theaterId}})
@@ -16,7 +18,8 @@ function ShowManage(props) {
 
   useEffect(()=>{
     const fetchData = async() => {
-      const response = await getTheaters()
+      const ownerMail = owner.email
+      const response = await getTheaters({ownerMail:ownerMail})
       console.log(response) 
       if(response.success){
         setTheaters(response.data)

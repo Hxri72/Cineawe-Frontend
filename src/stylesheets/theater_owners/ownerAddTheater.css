@@ -29,6 +29,13 @@
     p-4 
 }
 
+.inputFieldAddSeats{
+    @apply
+    rounded-md
+    w-20
+    -mr-2
+}
+
 .addTheatersButtonDiv{
     @apply
     p-16

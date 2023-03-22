@@ -4,15 +4,19 @@ import { useNavigate } from 'react-router'
 import {  deleteTheater, getTheaters } from '../../../api_Integration/owner/ownerInstance'
 import '../../../stylesheets/theater_owners/ownerTheaterManagement.css'
 import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 
 function TheaterManage() {
 
   const [theaters,setTheaters] = useState([])
   const navigate = useNavigate()
+  const {owner} = useSelector((state)=>state.owners)
 
   useEffect(()=>{
     const fetchTheater = async() =>{
-      const response = await getTheaters()
+      const ownerMail = owner.email
+      console.log(ownerMail)
+      const response = await getTheaters({ownerMail:ownerMail})
       console.log(response.data)
       if(response.success){
         setTheaters(response.data)
@@ -67,7 +71,7 @@ function TheaterManage() {
       </div>
 
       <div className='flex justify-end pr-24'>
-          <span onClick={handleAddTheater} className=' border-gray-900 p-2 rounded-md bg-slate-300 cursor-pointer hover:bg-slate-400'>Add Theater</span>
+          <span onClick={handleAddTheater} className=' border-gray-900 p-2 rounded-md bg-slate-300 cursor-pointer hover:bg-slate-400 mb-5'>Add Theater</span>
       </div>
 
       <div>

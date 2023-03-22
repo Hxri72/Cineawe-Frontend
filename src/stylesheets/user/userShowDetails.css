@@ -1,7 +1,7 @@
 .mainDivShowDetails{
     @apply
     w-full
-    h-96
+    h-auto
     bg-slate-200
 }
 
@@ -36,4 +36,40 @@ select:focus {
     outline: none;
     border-color: transparent;
     -webkit-appearance: none;
-  }
+}
+
+.showDetailsDiv{
+    @apply
+    w-full
+    h-auto
+    bg-slate-100
+}
+
+.wholeDataDiv{
+    @apply
+    w-full
+    h-full
+    p-32
+}
+
+.showsDataDiv{
+    @apply
+    w-full
+    h-1/2
+    flex
+}
+
+.theaterNameDiv{
+    @apply
+    p-16
+    text-black
+    text-lg
+    font-semibold
+    w-1/3
+}
+
+.showsNameDiv{
+    @apply
+    p-16
+
+}

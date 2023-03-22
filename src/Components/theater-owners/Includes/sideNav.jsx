@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import ownerImage from '../../../Assets/moderator/ownerHome/Admin-Profile-Vector-PNG-Image.jpg'
 
 function SideNav() {
     const navigate = useNavigate()
+    const {owner} = useSelector((state)=>state.owners)
 
     const logoutOwner = () => {
         try {
@@ -32,7 +34,7 @@ function SideNav() {
             </div>
           </div>
           <div>
-            <h1 className="font-semibold text-lg mt-2">James Clear</h1>
+            <h1 className="font-semibold text-lg mt-2">{owner && owner.email}</h1>
           </div>
           <div>
             <h1 className="text-slate-500">Theater Owner</h1>

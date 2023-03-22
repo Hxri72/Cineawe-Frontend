@@ -6,6 +6,10 @@
     z-index: 100;
 }
 
+select{
+  -webkit-appearance: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -79,4 +83,55 @@ form td:last-child {
   w-full
   h-full
   p-4
+}
+
+
+
+/* table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #0e0909;}
+
+table tr:hover {background-color: rgb(29, 7, 7);}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D;
+  color: white;
+} */
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 9px;
+
+}
+
+button:focus { outline:0 !important; }
+
+.dropdown{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+
+}
+
+.dropdown-row{
+  cursor: pointer;
+  text-align: start;
+  margin: 2px 0;
+}
+
+.dropdown:empty{
+  border: none;
 }
