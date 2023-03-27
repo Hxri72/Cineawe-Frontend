@@ -71,7 +71,7 @@ function ManageShowsAdmin() {
                     <td>{show.showname}</td>
                     <td>{show.moviename}</td>
                     <td className="flex flex-col">
-                      <span>{show.showdate}</span> <span>{show.showtime}</span>
+                      <span>{show.startdate}</span> <span>{show.showtime}</span>
                     </td>
                     <td>{show.ticketprice}</td>
                     <td>{show.availableseats}</td>

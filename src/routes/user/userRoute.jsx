@@ -9,6 +9,8 @@ import Signup from '../../Pages/user/userSignup/userSignup'
 import Otp from '../../Pages/user/userSignup/userOTP'
 import MovieDetails from '../../Pages/user/userMovieDetails/userMovieDetails'
 import ShowSelect from '../../Pages/user/userShowSelect/ShowSelect'
+import SeatSelection from '../../Pages/user/userSeatSelection/SeatSelection'
+import PaymentPage from '../../Pages/user/userPayment/PaymentPage'
 
 function UserRoute() {
   return (
@@ -20,6 +22,8 @@ function UserRoute() {
             <Route path='/otp' element={<Otp/>} exact/>
             <Route path='/movie-details' element={<ProtectedRoute><MovieDetails/></ProtectedRoute>} exact/>
             <Route path='/show-select' element={<ProtectedRoute><ShowSelect/></ProtectedRoute>} exact/>
+            <Route path='/seat-selection' element={<ProtectedRoute><SeatSelection/></ProtectedRoute>} exact/>
+            <Route path='/payment' element={<ProtectedRoute><PaymentPage/></ProtectedRoute>} exact/>
 
         </Routes>
 

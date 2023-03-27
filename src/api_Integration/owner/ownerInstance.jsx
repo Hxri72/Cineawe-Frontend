@@ -90,3 +90,5 @@ export const deleteTheater = async (payload) => {
     }
 }
 
+
+

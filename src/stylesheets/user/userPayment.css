@@ -1,0 +1,61 @@
+.paymentHeaderDiv{
+    @apply
+    w-full
+    h-32
+    bg-black
+}
+
+.appLogoDiv{
+    @apply
+    w-1/6
+    h-full
+    mx-auto
+}
+
+.paymentMainDiv{
+    @apply
+    w-full
+    h-screen
+    bg-slate-100
+}
+
+.contactDetailsDiv{
+    @apply
+    w-full
+    h-1/4
+}
+
+.contactHeaderDiv{
+    @apply
+    w-1/4   
+    h-1/2
+    flex
+    justify-center
+    pt-5
+}
+
+.contactFormDiv{
+    @apply
+    w-1/2
+    h-1/2
+    flex
+    justify-center
+}
+
+.formInputDiv{
+    @apply
+    mx-2
+    bg-slate-400
+    px-3
+    py-2
+}
+
+.submitButtonContact{
+    @apply
+    bg-slate-900
+    px-3
+    py-2
+    mx-4
+    text-white
+    rounded-lg
+}

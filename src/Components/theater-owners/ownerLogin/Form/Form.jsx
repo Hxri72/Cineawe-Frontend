@@ -5,6 +5,7 @@ import { toast } from "react-toast";
 import { loginOwner } from "../../../../api_Integration/owner/ownerInstance";
 import { setOwner } from "../../../../Redux/ownerSlice";
 
+
 function Form() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -20,7 +21,6 @@ function Form() {
     e.preventDefault()
     const response = await loginOwner(loginData)
     if(response.success){
-      console.log(loginData)
       dispatch(setOwner(loginData))
       localStorage.setItem("ownerToken",response.data)
       navigate('/owner/owner-Home')

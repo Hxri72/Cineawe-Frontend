@@ -21,14 +21,12 @@ function MovieBanner() {
     const fetchData = async() => {
       const response = await getMovieDetails(movieId)
       const response2 = await getCastDetails(movieId)
-      
       setMovieDetails(response)
       setGenres(response?.genres)
       setCast(response2.cast)
-      
     }
     fetchData();
-
+    window.scrollTo(0, 0);
   },[movieId])
 
   const myStyle = {

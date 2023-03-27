@@ -57,4 +57,13 @@ export const getShows = async(payload)=>{
     }
 }
 
+export const getTheaterDetails = async(payload) => {
+    try {
+        const response = await axiosInstanceUser.post('/get-theater',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
 

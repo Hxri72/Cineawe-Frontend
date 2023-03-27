@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { getMovieDetails } from "../../../api_Integration/Movie/Movie";
 import { getShowDates, getShows } from "../../../api_Integration/User/users";
 import "../../../stylesheets/user/userShowDetails.css";
@@ -9,6 +9,7 @@ import "../../../stylesheets/user/userShowDetails.css";
 function ShowDetails() {
 
     const location = useLocation();
+    const navigate = useNavigate()
     const movieId = location.state
     const [selectedValue, setSelectedvalue] = useState("");
 
@@ -31,18 +32,26 @@ function ShowDetails() {
     
   };
 
+  const handleShowTime = (show) => {
+    console.log(show)
+    console.log(selectedValue)
+    navigate('/seat-selection',{state:{show,selectedValue}})
+  }
+
 
   useEffect(()=>{
     const fetchData = async()=>{
         const response = await getMovieDetails(movieId)
         const responseDate = await getShowDates()
         setShowDate(responseDate.data)
-
         setMovieDetails(response)
+        window.scrollTo(0, 0);
     }
     fetchData();
   },[movieId])
-  console.log(showDate);
+
+ console.log(shows)
+    
   return (
     <Fragment>
       <div className="mainDivShowDetails">
@@ -74,19 +83,18 @@ function ShowDetails() {
           </div>
         </div>
         <div className="showDetailsDiv">
-            <div className="wholeDataDiv">
+            <div className="wholeDataDiv ">
                 {shows.map((show)=>(
-                <div className="showsDataDiv">
+                <div className="showsDataDiv bg-slate-200 rounded-lg">
                     <div className="theaterNameDiv">
                         <h1>{show?show.theaterName:''}</h1>
                     </div>
 
                     <div className="showsNameDiv">
                         <div className="flex">
-                          {show?.shows.map((time)=>( 
-                          <span className="mr-10 cursor-pointer px-5 py-2 bg-slate-500 rounded-lg text-sm">{time?.showtime}</span>
-                          ))}
-                           
+                          {show?.shows.map((time)=>(
+                          <span className="mr-10 cursor-pointer px-5 py-2 bg-slate-500 rounded-lg text-sm" onClick={()=>handleShowTime(time)}>{time?.showtime}</span>
+                          ))}                           
                         </div>
                     </div>
 

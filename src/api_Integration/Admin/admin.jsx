@@ -64,3 +64,12 @@ export const ownerStatusChange = async(payload)=>{
         return error.response;
     }
 }
+
+export const getTheaters = async() => {
+    try {
+        const response = await axiosInstanceAdmin.get('/get-theaters')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

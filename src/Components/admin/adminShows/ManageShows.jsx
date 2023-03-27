@@ -2,7 +2,8 @@ import React, { Fragment } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import { getTheaters } from '../../../api_Integration/owner/ownerInstance'
+import { getTheaters } from '../../../api_Integration/Admin/admin'
+
 
 function ManageShows() {
 

@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import { useEffect } from 'react'
-import { deleteTheater, getTheaters } from '../../../api_Integration/owner/ownerInstance'
+import { deleteTheater} from '../../../api_Integration/owner/ownerInstance'
 import Swal from 'sweetalert2'
+import { getTheaters } from '../../../api_Integration/Admin/admin'
 
 function ManageTheater() {
 

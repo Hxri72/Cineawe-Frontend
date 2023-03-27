@@ -6,9 +6,8 @@ import { signupOwner } from '../../../../api_Integration/owner/ownerInstance'
 import '.././../../../stylesheets/theater_owners/ownersSignup.css'
 import Swal from 'sweetalert2'
 
-
 function Form() {
-
+  
   const [fullname,setFullname] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
