@@ -62,6 +62,9 @@ td{
   font-size: 16px;
 }
 
+input[type="radio"]:focus {
+  outline: none;
+}
 
 
 /* form {
