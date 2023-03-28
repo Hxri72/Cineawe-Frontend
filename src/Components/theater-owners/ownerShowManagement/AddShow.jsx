@@ -48,21 +48,7 @@ function AddShow() {
     }
   };
 
-  // function handleDateChange(event) {
-  //   const dateValue = event.target.value;
-  //   console.log(dateValue)
-  //   const formattedDate = formatDate(dateValue);
-  //   console.log(formattedDate)
-  //   setShowdate(formattedDate);
-  // }
-
-  // function formatDate(date) {
-  //   const parts = date.split("-");
-  //   const year = parts[0];
-  //   const month = parts[1];
-  //   const day = parts[2];
-  //   return `${day}/${month}/${year}`;
-  // }
+ 
 
   const handleInputChange = async (e) => {
     try {
@@ -89,7 +75,7 @@ function AddShow() {
       }
     };
     fetchData();
-  }, []);
+  }, [owner.email]);
 
   const onSearch = (searchTerm) => {
     setInputvalue(searchTerm);
@@ -106,8 +92,9 @@ function AddShow() {
             </div>
 
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-3 p-5">
+              <div className="grid grid-cols-3 p-2">
                 <div className="px-5 ">
+                  <label className="labelClass">Theater</label>
                   <select
                     className="addShowInput w-52"
                     type="text"
@@ -123,8 +110,9 @@ function AddShow() {
                     ))}
                   </select>
                 </div>
+
                 <div className="">
-                
+                  <label className="labelClass">Showname</label>
                   <input
                     className="addShowInput"
                     type="text"
@@ -136,6 +124,7 @@ function AddShow() {
                 </div>
 
                 <div className="">
+                  <label className="labelClass">Moviename</label>
                   <input
                     className="addShowInput"
                     type="text"
@@ -171,9 +160,10 @@ function AddShow() {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-3 p-5">
+              <div className="grid grid-cols-3 p-2">
 
                 <div className="px-5">
+                  <label className="labelClass">TicketPrice</label>
                 <input
                   className="addShowInput w-52"
                   type="number"
@@ -185,6 +175,7 @@ function AddShow() {
                 </div>
 
                 <div>
+                  <label className="labelClass">Show start date </label>
                 <input
                   className="addShowInput w-56"
                   type="date"
@@ -195,6 +186,7 @@ function AddShow() {
                 </div>
 
                 <div>
+                  <label className="labelClass">Show end date</label>
                 <input
                   className="addShowInput w-56"
                   type="date"
@@ -205,9 +197,10 @@ function AddShow() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-4 p-5">
+              <div className="grid grid-cols-4 p-2">
 
                 <div className=" px-5">
+                <label className="labelClass">Show time</label>
                 <input
                   className="addShowInput"
                   type="time"

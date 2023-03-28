@@ -50,7 +50,7 @@ function EditTheater() {
             }
         }
         fetchData();
-    },[])
+    },[location.state])
 
   return (
     <Fragment>
@@ -63,13 +63,19 @@ function EditTheater() {
         <div className='addTheaterFormDiv'>
             <form onSubmit={handleSubmit}>
               <div className='partOneInput'>
+                <div className='flex flex-col'>
+                <label className='labelClass'>Theater</label>
                 <input className='inputFieldAddTheaters'
                  placeholder={theater && theater.theaterName} 
                  name='theatername' 
                  type='text' 
                  value={theatername}
                  onChange={(e)=> setTheaterName(e.target.value)}
-                 ></input>
+                 ></input> 
+                </div>
+
+                <div className='flex flex-col'>
+                <label className='labelClass'>Address</label>
                 <input 
                 className='inputFieldAddTheaters' 
                 placeholder={theater.address}
@@ -78,24 +84,31 @@ function EditTheater() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 ></input>
+                </div>
               </div>
 
               <div className='partTwoInput'>
-                <input className='inputFieldAddTheaters'
-                placeholder={theater.phone}
-                name='phone'
-                type='number'
-                value={phone}
-                onChange={(e)=>setPhone(e.target.value)}
-                ></input>
-                <input 
-                className='inputFieldAddTheaters'
-                placeholder={theater.totalSeats}
-                name='availableseats'
-                type='number'
-                value={totalSeats}
-                onChange={(e)=>setTotalSeats(e.target.value)}
+                <div className='flex flex-col'>
+                    <label className='labelClass'>Phone</label>
+                    <input className='inputFieldAddTheaters'
+                    placeholder={theater.phone}
+                    name='phone'
+                    type='number'
+                    value={phone}
+                    onChange={(e)=>setPhone(e.target.value)}
+                    ></input>
+                </div>
+                <div className='flex flex-col'>
+                    <label className='labelClass'>Total Seats</label>
+                    <input 
+                    className='inputFieldAddTheaters'
+                    placeholder={theater.totalSeats}
+                    name='availableseats'
+                    type='number'
+                    value={totalSeats}
+                    onChange={(e)=>setTotalSeats(e.target.value)}
                  ></input>
+                </div>
               </div>
 
               <div className='addTheatersButtonDiv'>

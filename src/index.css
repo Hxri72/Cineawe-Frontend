@@ -138,3 +138,9 @@ button:focus { outline:0 !important; }
 .dropdown:empty{
   border: none;
 }
+
+.labelClass{
+  @apply
+  text-red-600 
+  text-sm
+}
