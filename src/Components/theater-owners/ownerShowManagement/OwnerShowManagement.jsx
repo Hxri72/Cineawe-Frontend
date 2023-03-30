@@ -20,7 +20,6 @@ function ShowManage(props) {
     const fetchData = async() => {
       const ownerMail = owner.email
       const response = await getTheaters({ownerMail:ownerMail})
-      console.log(response) 
       if(response.success){
         setTheaters(response.data)
       }

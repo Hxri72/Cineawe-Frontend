@@ -66,4 +66,22 @@ export const getTheaterDetails = async(payload) => {
     }
 }
 
+export const getCreateOrder = async(payload) => {
+    try {
+        const response = await axiosInstanceUser.post('/get-create-order',(payload))
+        return response.data        
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const verifyPaymentUser = async(payload) => {
+    try {
+        const response = await axiosInstanceUser.post('/verify-payment',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
 

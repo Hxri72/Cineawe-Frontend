@@ -26,7 +26,7 @@ function ProtectedRoute(props) {
   }
 
   useEffect(()=>{
-    GetCurrentUser()
+     GetCurrentUser()
   })
 
     if (localStorage.getItem("token")){

@@ -52,6 +52,14 @@
     
 }
 
+.seatSold{
+    @apply
+    w-5
+    h-5
+    bg-gray-600
+    rounded-tl-lg
+}
+
 .screenDivInside{
     @apply
     w-1/2

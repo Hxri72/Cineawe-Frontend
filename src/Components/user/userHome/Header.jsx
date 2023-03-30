@@ -7,11 +7,17 @@ import { setUser } from '../../../Redux/usersSlice';
 function Header() {
     const dispatch = useDispatch();
     const {user} = useSelector((state) => state.users)
+    console.log(user)
     const navigate = useNavigate()
+
     const handleLogout = (e) => {
         dispatch(setUser(null))
         localStorage.removeItem("token")
         navigate('/login')
+    }
+
+    const handleBookings = (e) => {
+        navigate('/list-bookings')
     }
   return (
     <Fragment>
@@ -41,7 +47,7 @@ function Header() {
         <div className='headerDown'>
             <div className='insideItems flex justify-end p-2'>
                 <h1 className='text-gray-400 mr-10 font-sans font-semibold text-sm'>Home</h1>
-                <h1 className='text-gray-400 font-semibold text-sm mr-5'>List your bookings</h1>
+                <h1 className='text-gray-400 font-semibold text-sm mr-5' onClick={handleBookings}>List your bookings</h1>
 
             </div>
 

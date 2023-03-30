@@ -41,13 +41,14 @@
     w-1/2
     h-1/2
     flex
-    justify-center
+    justify-start
+    mx-20
 }
 
 .formInputDiv{
     @apply
     mx-2
-    bg-slate-400
+    bg-slate-300
     px-3
     py-2
     

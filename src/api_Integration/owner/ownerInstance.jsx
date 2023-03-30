@@ -1,5 +1,14 @@
 import { axiosInstanceOwner } from "../axiosInstance";
 
+export const getCurrentOwner = async(payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/getCurrentOwner',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
 export const signupOwner = async(payload) => {
     try {
         const response = await axiosInstanceOwner.post('/ownersignup',(payload))

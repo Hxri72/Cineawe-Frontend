@@ -13,7 +13,6 @@ function SeatSelect() {
   const location = useLocation()
   const showData = location.state.show
   const date = location.state.selectedValue
-  console.log(date)
 
   const handleSeat = (seatDetails) => {
     try {
@@ -35,7 +34,8 @@ function SeatSelect() {
 
   const data = {
     showData:showData,
-    theaterSeats:theaterSeats,
+    selectedSeats:selectedSeats,
+    date:date
   }
 
   const handlePayment = (e) => {
@@ -98,14 +98,32 @@ function SeatSelect() {
                   
                   <div className='w-full flex justify-center'></div>
                   <div className='m-2'>
-                    <div className='seatClass' onClick={()=>handleSeat(seat)}></div>
+                    {seat.seatStatus !== 'sold' ? (
+
+                      <div className={`seatClass ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}></div>
+                    ) : (
+
+                      <div className={'seatSold'}></div>
+                      
+                    )
+                    
+                    }
                   </div>
                   </>
                 )
               }else{
                 return (
                   <div className='m-2'>
-                    <div className={`seatClass ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}></div>
+                    {seat.seatStatus !== 'sold' ? (
+
+                      <div className={`seatClass ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}></div>
+                    ) : (
+
+                      <div className={'seatSold'}></div>
+                      
+                    )
+                    
+                    }
                   </div>
                 );
               }

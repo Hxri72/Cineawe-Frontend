@@ -37,7 +37,7 @@ function Form() {
         localStorage.setItem("token",data)
       }else{
         toast(message,{
-          backgroundColor:'darkred' ,
+          backgroundColor:'darkred',
           color: 'ffffff'
         })
       }
