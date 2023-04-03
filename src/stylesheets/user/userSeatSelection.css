@@ -38,8 +38,12 @@
     @apply
     w-5
     h-5
+    font-medium
+    text-center
     bg-slate-200
     rounded-tl-lg
+    transition
+    cursor-pointer
     hover:bg-green-600
 }
 
@@ -47,7 +51,10 @@
     @apply
     w-5
     h-5
+    font-medium
+    text-center
     bg-green-600
+    cursor-pointer
     rounded-tl-lg
     
 }

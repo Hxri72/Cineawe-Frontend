@@ -1,0 +1,68 @@
+.mainDivBookings{
+    @apply
+    w-full
+    h-auto
+    bg-slate-50
+    p-10
+}
+
+.innerDivBookings{
+    @apply
+    w-full
+    h-full
+    
+    bg-slate-300
+}
+
+.noShowsHead{
+    @apply
+    w-full
+    h-screen
+    content-center
+    flex
+    flex-col
+    justify-center
+    items-center
+}
+
+.showHead{
+    @apply
+    w-full
+    h-min
+    p-10
+}
+
+.ticketOutsideDiv{
+    @apply
+    w-full
+    h-full
+    mt-10
+}
+
+.ticketDiv{
+    @apply
+    w-full
+    h-1/3
+    bg-slate-50
+    px-16
+    py-4
+    rounded-md
+    border-2
+    border-slate-700
+    flex
+    justify-between
+    mt-5
+}
+
+.ticketDetailsone{
+    @apply
+    flex
+    flex-col
+    justify-center
+}
+
+.ticketDetails{
+    @apply
+    w-full
+
+}

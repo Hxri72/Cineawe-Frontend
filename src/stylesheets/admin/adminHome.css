@@ -98,7 +98,7 @@
 
 .chart1{
     height: 100%;
-    width: 35%;
+    width: 50%;
     @apply
     bg-slate-800
     rounded-3xl
@@ -106,7 +106,7 @@
 
 .chart2{
     height: 100%;
-    width: 80%;
+    width: 50%;
     @apply
     ml-10
     bg-slate-400
@@ -114,19 +114,19 @@
 }
 
 .chart3{
-    height: 35%;
+    height: 25%;
     @apply
     w-full
-    mt-7
     rounded-3xl
-    bg-slate-300
+    bg-slate-800
+    text-white
 }
 
 .maincharts{
     height: 60%;
     @apply
     w-full
-    
+    mt-12
 }
 
 .mainContent{

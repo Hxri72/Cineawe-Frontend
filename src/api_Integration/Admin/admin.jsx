@@ -73,3 +73,39 @@ export const getTheaters = async() => {
         return error.response
     }
 }
+
+export const getAllBookings = async() => {
+    try {
+        const response = await axiosInstanceAdmin.get('/getAllBooking')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const addMovieDetails = async(payload) => {
+    try {
+        const response = await axiosInstanceAdmin.post('/add-movies',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getMovies = async() => {
+    try {
+        const response = await axiosInstanceAdmin.get('/get-movies')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const deleteMovie = async (payload) => {
+    try {
+        const response = await axiosInstanceAdmin.post('/delete-movie',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}

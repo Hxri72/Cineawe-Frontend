@@ -18,7 +18,7 @@ function ManageUser() {
       } else {
         console.log("no users");
       }
-    };
+    }
     fetchUser();
   }, []);
 
@@ -96,7 +96,8 @@ const {
   previousPage,
   prepareRow
 } = tableInstance
-console.log(page)
+
+
   return (
     <Fragment>
       <div className="mainDiv">

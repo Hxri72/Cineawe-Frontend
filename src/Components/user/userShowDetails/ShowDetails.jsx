@@ -25,6 +25,7 @@ function ShowDetails() {
             movieName:movieDetails.title
         }
         const response = await getShows({data})
+        console.log(response.data)
         setShows(response.data)
     } catch (error) {
         return error.message
@@ -49,8 +50,6 @@ function ShowDetails() {
     }
     fetchData();
   },[movieId])
-
- console.log(shows)
     
   return (
     <Fragment>
@@ -82,8 +81,11 @@ function ShowDetails() {
             </div>
           </div>
         </div>
+        {selectedValue ? 
+        <>
         <div className="showDetailsDiv">
             <div className="wholeDataDiv ">
+                
                 {shows.map((show)=>(
                 <div className="showsDataDiv bg-slate-200 rounded-lg">
                     <div className="theaterNameDiv">
@@ -99,9 +101,22 @@ function ShowDetails() {
                     </div>
 
                 </div>
-                ))}
+                ))} 
             </div>
         </div>
+        </>
+        : 
+        <>
+        <div className="showDetailsDiv">
+          <div className="wholeDataDiv">
+            <div className="noShowsHead2">
+              <h1 className='text-3xl font-bold text-slate-400'>Select a Date</h1>
+            </div>
+          </div>
+        </div>
+        </>
+        } 
+        
       </div>
     </Fragment>
   );

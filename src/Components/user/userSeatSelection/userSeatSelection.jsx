@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { getTheaterDetails } from '../../../api_Integration/User/users'
+import { getCastDetails } from '../../../api_Integration/Movie/Movie'
+import { getSeats, getTheaterDetails } from '../../../api_Integration/User/users'
 import'../../../stylesheets/user/userSeatSelection.css'
 
 function SeatSelect() {
@@ -46,10 +47,11 @@ function SeatSelect() {
   useEffect(() => {
     const fetchData = async()=>{
       const response = await getTheaterDetails({theaterName:showData.theatername})
+      const response2 = await getSeats({Dates:showData.dates,date:date})
       setTheaterDetails(response.data[0])
+      setTheaterSeats(response2.data)
     }
-    fetchData();
-    setTheaterSeats(showData.seats);
+    fetchData(); 
     window.scrollTo(0, 0);
   }, [showData.seats,showData.theatername]);
 
@@ -99,11 +101,20 @@ function SeatSelect() {
                   <div className='w-full flex justify-center'></div>
                   <div className='m-2'>
                     {seat.seatStatus !== 'sold' ? (
+                      <>
+                      <div className='flex'>
 
-                      <div className={`seatClass ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}></div>
+                      <h1 className='mx-2 text-gray-400 font-medium'>{seat.id.slice(0,1)}</h1>
+                      <div className={`seatClass ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}>{seat.id.slice(2,5)}</div>
+                      </div>
+                      </>
                     ) : (
-
+                      <>
+                      <div className='flex'>
+                      <h1 className='mx-2 text-gray-400 font-medium'>{seat.id.slice(0,1)}</h1>
                       <div className={'seatSold'}></div>
+                      </div>
+                      </>
                       
                     )
                     
@@ -115,11 +126,15 @@ function SeatSelect() {
                 return (
                   <div className='m-2'>
                     {seat.seatStatus !== 'sold' ? (
-
-                      <div className={`seatClass ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}></div>
+                      <>
+                      
+                      <div className={`seatClass p-px text-sm ${seat.seatStatus === 'selected' ? 'seatSelected' : ''}`} onClick={()=>handleSeat(seat)}>{seat.id.slice(2,5)}</div>
+                      </>
                     ) : (
-
+                      <>
+                      
                       <div className={'seatSold'}></div>
+                      </>
                       
                     )
                     

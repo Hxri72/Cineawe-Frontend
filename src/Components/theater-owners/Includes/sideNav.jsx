@@ -65,7 +65,9 @@ function SideNav() {
             </Link>
           </div>
           <div className="route">
-            <button>Bookings</button>
+            <Link to={"/owner/owner-bookings"}>
+              <span>Bookings</span>
+            </Link>
           </div>
           <div className="route">
             <button>Sales Report</button>

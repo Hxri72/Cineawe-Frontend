@@ -12,6 +12,8 @@ import OwnerShowManagement from '../../Pages/theater_owners/ownerShowManagement/
 import OwnerAddShow from '../../Pages/theater_owners/ownerAddShow/OwnerAddShow'
 import OwnerShowDetails from '../../Pages/theater_owners/ownerShowManagement/OwnerShowDetails'
 import OwnerEditTheater from '../../Pages/theater_owners/ownerEditTheater/OwnerEditTheater'
+import OwnerBookings from '../../Pages/theater_owners/ownerBookings/OwnerBookings'
+import NotFound from '../../Pages/user/userErrorPage/NotFound'
 
 
 function OwnerRoute() {
@@ -27,6 +29,8 @@ function OwnerRoute() {
         <Route path='/owner-add-show' element={<ProtectedRouteOwner><OwnerAddShow/></ProtectedRouteOwner>}/>
         <Route path='/owner-show-details' element={<ProtectedRouteOwner><OwnerShowDetails/></ProtectedRouteOwner>}/>
         <Route path='/owner-edit-theater' element={<ProtectedRouteOwner><OwnerEditTheater/></ProtectedRouteOwner>}/>
+        <Route path='/owner-bookings' element={<ProtectedRouteOwner><OwnerBookings/></ProtectedRouteOwner>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
     </Fragment>
   )

@@ -1,0 +1,12 @@
+.noShowsHeadError{
+    @apply
+    w-full
+    h-screen
+    content-center
+    flex
+    flex-col
+    justify-center
+    items-center
+    bg-slate-900
+    
+}

@@ -66,6 +66,15 @@ export const getTheaterDetails = async(payload) => {
     }
 }
 
+export const getSeats = async(payload) => {
+    try {
+        const response = await axiosInstanceUser.post('/get-seats',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
 export const getCreateOrder = async(payload) => {
     try {
         const response = await axiosInstanceUser.post('/get-create-order',(payload))
@@ -78,6 +87,33 @@ export const getCreateOrder = async(payload) => {
 export const verifyPaymentUser = async(payload) => {
     try {
         const response = await axiosInstanceUser.post('/verify-payment',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getTickets = async(payload) => {
+    try {
+        const response = await axiosInstanceUser.post('/get-tickets',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const cancelBooking = async(payload) => {
+    try {
+        const response = await axiosInstanceUser.post('/cancel-booking',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getAllMovies = async() => {
+    try {
+        const response = await axiosInstanceUser.get('/get-all-movies')
         return response.data
     } catch (error) {
         return error.response

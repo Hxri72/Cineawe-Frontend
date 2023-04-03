@@ -21,9 +21,9 @@ function AddShow() {
   const [startDate, setStartdate] = useState("");
   const [endDate, setEnddate] = useState("");
   const [showtime, setShowtime] = useState("");
-  console.log(theaters)
 
   const [inputValue, setInputvalue] = useState("");
+  const [language,setLanguage] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestions] = useState(false);
 
@@ -31,9 +31,10 @@ function AddShow() {
     theatername: theatername,
     showname: showname,
     moviename: inputValue,
+    movieLanguage : language,
     ticketprice: ticketprice,
-    startDate:startDate,
-    endDate:endDate,
+    startDate: startDate,
+    endDate : endDate,
     showtime: showtime,
   };
 
@@ -77,8 +78,9 @@ function AddShow() {
     fetchData();
   }, [owner.email]);
 
-  const onSearch = (searchTerm) => {
-    setInputvalue(searchTerm);
+  const onSearch = (searchTerm,movieLanguage) => {
+    setInputvalue(searchTerm)
+    setLanguage(movieLanguage)
   };
 
   console.log(showSuggestion);
@@ -150,7 +152,7 @@ function AddShow() {
                       .slice(0, 5)
                       .map((suggestion) => (
                         <div
-                          onClick={() => onSearch(suggestion.title)}
+                          onClick={() => onSearch(suggestion.title,suggestion.original_language)}
                           className="dropdown-row"
                           key={suggestion.title}
                         >

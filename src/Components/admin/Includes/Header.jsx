@@ -53,6 +53,11 @@ function Sidenav() {
             </Link>
           </div>
           <div className="route cursor-pointer">
+            <Link to={"/admin/admin-movies"}>
+              <span>Movie Management</span>
+            </Link>
+          </div>
+          <div className="route cursor-pointer">
             <Link to={"/admin/admin-theater"}>
               <span>Theater Management</span>
             </Link>
@@ -63,7 +68,9 @@ function Sidenav() {
             </Link>
           </div>
           <div className="route">
-            <button>Bookings</button>
+            <Link to={"/admin/admin-bookings"}>
+              <span>Bookings</span>
+            </Link>
           </div>
           <div className="route">
             <button>Sales Report</button>

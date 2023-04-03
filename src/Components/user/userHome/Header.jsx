@@ -19,6 +19,10 @@ function Header() {
     const handleBookings = (e) => {
         navigate('/list-bookings')
     }
+
+    const handleHome = () => {
+        navigate('/')
+    }
   return (
     <Fragment>
 
@@ -46,9 +50,8 @@ function Header() {
         </div>
         <div className='headerDown'>
             <div className='insideItems flex justify-end p-2'>
-                <h1 className='text-gray-400 mr-10 font-sans font-semibold text-sm'>Home</h1>
-                <h1 className='text-gray-400 font-semibold text-sm mr-5' onClick={handleBookings}>List your bookings</h1>
-
+                <h1 className='text-gray-400 mr-10 font-sans font-semibold text-sm cursor-pointer' onClick={handleHome}>Home</h1>
+                <h1 className='text-gray-400 font-semibold text-sm mr-5 cursor-pointer' onClick={handleBookings}>List your bookings</h1>
             </div>
 
         </div>

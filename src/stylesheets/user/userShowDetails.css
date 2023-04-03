@@ -73,3 +73,14 @@ select:focus {
     p-16
 
 }
+
+.noShowsHead2{
+    @apply
+    w-full
+    h-48
+    content-center
+    flex
+    flex-col
+    justify-center
+    items-center
+}

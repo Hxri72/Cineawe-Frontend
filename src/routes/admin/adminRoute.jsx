@@ -10,6 +10,10 @@ import ProtectedRouteAdmin from '../../Components/admin/protectedRouteAdmin/prot
 import AdminTheater from '../../Pages/admin/adminTheater/AdminTheater'
 import AdminShows from '../../Pages/admin/adminShows/AdminShows'
 import AdminShowsManage from '../../Pages/admin/adminShows/AdminShowsManage'
+import AdminBookings from '../../Pages/admin/adminBookings/AdminBookings'
+import NotFound from '../../Pages/user/userErrorPage/NotFound'
+import AdminMovies from '../../Pages/admin/adminMovies/AdminMovies'
+import AdminAddMovies from '../../Pages/admin/adminMovies/AdminAddMovies'
 
 function  AdminRoute() {
   return (
@@ -22,6 +26,10 @@ function  AdminRoute() {
           <Route path='/admin-theater' element={<ProtectedRouteAdmin><AdminTheater/></ProtectedRouteAdmin>} exact/>
           <Route path='/admin-shows' element={<ProtectedRouteAdmin><AdminShows/></ProtectedRouteAdmin>} exact/>
           <Route path='/admin-shows-manage' element={<ProtectedRouteAdmin><AdminShowsManage/></ProtectedRouteAdmin>} exact/>
+          <Route path='/admin-bookings' element={<ProtectedRouteAdmin><AdminBookings/></ProtectedRouteAdmin>} exact/>
+          <Route path='/admin-movies' element={<ProtectedRouteAdmin><AdminMovies/></ProtectedRouteAdmin>} exact/>
+          <Route path='/admin-add-movies' element={<ProtectedRouteAdmin><AdminAddMovies/></ProtectedRouteAdmin>} exact/>
+          <Route path='*' element={<NotFound/>}/>
       </Routes>
     </div>
   )

@@ -5,10 +5,9 @@ import useRazorpay from "react-razorpay";
 import { useSelector } from 'react-redux';
 
 
-
 function PaymentSection() {
     const navigate = useNavigate()
-    const Razorpay = useRazorpay();
+    const Razorpay = useRazorpay()
     const {user} = useSelector((state) => state.users)
 
     const [checked,setChecked] = useState(false)
@@ -50,6 +49,9 @@ function PaymentSection() {
     }
 
     const handleSubmit = async(e) => {
+        if(checked===false){
+            alert('select a payment method')
+        }
         e.preventDefault()
         const response = await getCreateOrder({amount:total})
         console.log(response)
@@ -83,6 +85,7 @@ function PaymentSection() {
 
         const verifyPayment = async(payment,order) => {
             const response = await verifyPaymentUser({payment,order,paymentData})
+            console.log(response)
             if(response.success){
                 navigate('/')
             }else{
@@ -106,10 +109,10 @@ function PaymentSection() {
                     <div className='flex '>
                     
                         <div >
-                            <input className='formInputDiv' placeholder='Email' name='email' value={email} onChange={(e)=>setEmail(e.target.value)}></input>
+                            <input className='formInputDiv' placeholder='Email' name='email' value={email} onChange={(e)=>setEmail(e.target.value)} required></input>
                         </div>
                         <div >
-                            <input className='formInputDiv' placeholder='Phone' name='phone' value={phone} onChange={(e)=>setPhone(e.target.value)}></input>
+                            <input className='formInputDiv' placeholder='Phone' name='phone' value={phone} onChange={(e)=>setPhone(e.target.value)} required></input>
                         </div>
                     
                     </div>

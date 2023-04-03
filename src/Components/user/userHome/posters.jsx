@@ -2,13 +2,18 @@ import React, { Fragment } from 'react'
 
 import applogo from "../../../Assets/user/userSignup/Cineawe.png";
 import { useEffect } from 'react';
-import { getEnglishMovies, getMalayalamMovies, getTamilMovies } from '../../../api_Integration/Movie/Movie';
 import { useState } from 'react';
 import { imageUrl } from '../../../constants/constants';
 import { useNavigate } from 'react-router-dom';
+import { getAllMovies, getEnglishMovies } from '../../../api_Integration/User/users';
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../../../Redux/loadersSlice";
+
+
 function Posters() {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [englishMovies,setEnglishMovies] = useState([])
   const [malayalamMovies,setMalayalamMovies] = useState([])
   const [TamilMovies,setTamilMovies] = useState([])
@@ -20,13 +25,13 @@ function Posters() {
   useEffect(()=>{
     try {
       const fetchData1 = async() => {
-        const response1 = await getEnglishMovies()
-        const response2 = await getMalayalamMovies()
-        const response3 = await getTamilMovies()
-  
-        setEnglishMovies(response1.results)
-        setMalayalamMovies(response2.results)
-        setTamilMovies(response3.results)
+        dispatch(showLoading())
+        const response1 = await getAllMovies()
+        console.log(response1.data)
+        setEnglishMovies(response1.data.englishMovies)
+        setMalayalamMovies(response1.data.malayalamMovies)
+        setTamilMovies(response1.data.tamilMovies)
+        dispatch(hideLoading())
       }
       fetchData1();
     } catch (error) {
@@ -44,7 +49,7 @@ function Posters() {
         <div className='displayMovies flex overflow-x-scroll overflow-y-hidden w-full'>
           
           {englishMovies.map((obj)=>
-              <img className='postersHome cursor-pointer' alt='posters' src={`${imageUrl+obj.poster_path}`} onClick={()=>handleMovie(obj.id)}/>
+              <img className='postersHome cursor-pointer' alt='posters' loading='lazy' src={`${imageUrl+obj.poster_path}`} onClick={()=>handleMovie(obj.id)}/>
               )}
           
           
