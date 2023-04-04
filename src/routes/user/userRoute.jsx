@@ -13,6 +13,8 @@ import SeatSelection from '../../Pages/user/userSeatSelection/SeatSelection'
 import PaymentPage from '../../Pages/user/userPayment/PaymentPage'
 import ListBookings from '../../Pages/user/userListBookings/ListBookings'
 import NotFound from '../../Pages/user/userErrorPage/NotFound'
+import PaymentSuccess from '../../Pages/user/userPaymentStatus/paymentSuccess'
+import PaymentFailure from '../../Pages/user/userPaymentStatus/paymentFailure'
 
 function UserRoute() {
   return (
@@ -27,6 +29,8 @@ function UserRoute() {
             <Route path='/seat-selection' element={<ProtectedRoute><SeatSelection/></ProtectedRoute>} exact/>
             <Route path='/payment' element={<ProtectedRoute><PaymentPage/></ProtectedRoute>} exact/>
             <Route path='/list-bookings' element={<ProtectedRoute><ListBookings/></ProtectedRoute>} exact/>
+            <Route path='/payment-success' element={<ProtectedRoute><PaymentSuccess/></ProtectedRoute>} exact/>
+            <Route path='/payment-failure' element={<ProtectedRoute><PaymentFailure/></ProtectedRoute>} exact/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
 

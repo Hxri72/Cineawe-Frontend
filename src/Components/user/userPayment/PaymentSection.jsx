@@ -11,8 +11,8 @@ function PaymentSection() {
     const {user} = useSelector((state) => state.users)
 
     const [checked,setChecked] = useState(false)
-    const [email,setEmail] = useState('')
-    const [phone,setPhone] = useState('')
+    const [email,setEmail] = useState(user.email)
+    const [phone,setPhone] = useState(user.phone)
     const [payment,setPayment] = useState('razorpay')
 
     const location = useLocation()
@@ -85,9 +85,8 @@ function PaymentSection() {
 
         const verifyPayment = async(payment,order) => {
             const response = await verifyPaymentUser({payment,order,paymentData})
-            console.log(response)
             if(response.success){
-                navigate('/')
+                navigate('/payment-success',{state:{paymentData}})
             }else{
                 alert('payment failed')
             }

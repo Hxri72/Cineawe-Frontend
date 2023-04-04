@@ -1,0 +1,55 @@
+.mainDivPaymentSuccess{
+    @apply
+    w-full
+    h-screen
+    bg-slate-300
+}
+
+.paymentSuccessDiv{
+    @apply
+    w-1/3
+    h-3/4
+    bg-white
+    rounded-lg      
+}
+
+.bookingDetailsDiv{
+    @apply
+    flex justify-start
+    mt-3
+}
+
+.paymentDetailsDiv{
+    @apply
+    mt-3
+
+}
+
+.backToHomeButtonDiv{
+    @apply
+    flex
+    justify-center
+    mt-3
+}
+
+.detailsFont{
+    @apply
+    font-thin
+}
+
+.paymentSuccessImg{
+    @apply
+    w-full
+    h-1/4
+}
+
+.paymentSuccessParentDiv{
+    @apply
+    w-full
+    h-full
+    content-center
+    flex
+    flex-col
+    justify-center
+    items-center
+}

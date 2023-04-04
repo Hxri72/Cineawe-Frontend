@@ -85,7 +85,9 @@ function ShowDetails() {
         <>
         <div className="showDetailsDiv">
             <div className="wholeDataDiv ">
-                
+
+              {shows.length !==0 ? 
+              <>
                 {shows.map((show)=>(
                 <div className="showsDataDiv bg-slate-200 rounded-lg">
                     <div className="theaterNameDiv">
@@ -101,7 +103,15 @@ function ShowDetails() {
                     </div>
 
                 </div>
-                ))} 
+                ))}
+                </>
+                :
+                <>
+                <div className="noShowsHead2">
+                  <h1 className='text-3xl font-bold text-slate-400'>No shows</h1>
+                </div>
+                </>
+                }
             </div>
         </div>
         </>
