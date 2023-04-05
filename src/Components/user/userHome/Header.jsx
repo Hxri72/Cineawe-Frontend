@@ -1,14 +1,34 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import applogo from "../../../Assets/user/userSignup/Cineawe.png";
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../../Redux/usersSlice';
+import { getMovies } from '../../../api_Integration/Admin/admin';
 
 function Header() {
     const dispatch = useDispatch();
     const {user} = useSelector((state) => state.users)
-    console.log(user)
     const navigate = useNavigate()
+
+    const [inputValue,setInputValue] = useState('')
+    const [suggestions, setSuggestions] = useState([]);
+
+    const handleInputChange = async (e) => {
+        try {
+          const value = e.target.value;
+          setInputValue(value);
+          const response = await getMovies();
+          setSuggestions(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
+    const onSearch = (searchTerm,movieId) => {
+        setInputValue(searchTerm)
+        navigate('/movie-details',{state:movieId})
+
+    }
 
     const handleLogout = (e) => {
         dispatch(setUser(null))
@@ -25,17 +45,47 @@ function Header() {
     }
   return (
     <Fragment>
-
     <div>
         <div className='headerdiv flex'>
             <div className='w-1/4'>
                 <img className='w-56' src={applogo} alt='applogo'/>
             </div>
             <div className='w-1/2'>
-            <div className='flex items-baseline mt-6 '>
-                <input className='headerSearch mr-6 rounded-md px-2' placeholder='Search for Movies'></input>
-                <button className='border-solid border-2 border-black bg-black hover:bg-slate-800 h-10 w-1/6 rounded-md text-white'>Search</button>
+            <div className=' items-baseline mt-6 '>
+                <input className='headerSearch mr-6 rounded-md px-2 font-medium' 
+                placeholder='Search for movies'
+                type="text"
+                name="moviename"
+                autocomplete="off"
+                value={inputValue}
+                onChange={(e) => handleInputChange(e)}
+                ></input>
+
+                <div className="dropdown w-72 font-medium rounded-md">
+                {suggestions
+                .filter((item) => {
+                const searchTerm = inputValue.toLowerCase();
+                const title = item.movieName.toLowerCase();
+
+                return (
+                searchTerm &&
+                title.startsWith(searchTerm) &&
+                title !== searchTerm
+                );
+                })
+                .slice(0, 2)
+                .map((suggestion) => (
+                <div
+                onClick={() => onSearch(suggestion.movieName,suggestion.movieId)}
+                className="dropdown-row pl-2"
+                key={suggestion.movieName}
+                >
+                {suggestion.movieName}
+                </div>
+                ))}
+                </div>
             </div>
+
             </div>
             <div className='w-1/3 justify-end grid'>
             {user && <div>

@@ -1,28 +1,33 @@
 import React, { Fragment } from "react";
-import { CChart } from '@coreui/react-chartjs'
-// import '@coreui/coreui/dist/css/coreui.min.css';
+import { Line } from 'react-chartjs-2';
 
 function Maindiv() {
-
-  const chartData = {
+  
+  const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
       {
-        label: 'My First dataset',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
-        data: [65, 59, 80, 81, 56, 55, 40],
+        label: 'Sales',
+        data: [12, 19, 3, 5, 2, 3, 11],
+        fill: false,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1,
       },
     ],
   };
   
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
+  const options = {
+    scales: {
+      y: {
+        type: 'logarithmic',
+        ticks: {
+          beginAtZero: true,
+          stepSize: 10,
+        },
+      },
+    },
   };
+
   return (
     <Fragment>
       <div className="mainDiv">
@@ -62,7 +67,8 @@ function Maindiv() {
             <div className="chart1">
             
               <div className="flex justify-start text-slate-500 text-sm col-span-3 w-full h-full">
-                <img src="https://www.tibco.com/sites/tibco/files/media_entity/2022-01/doughnut-chart-example.svg" alt="graph1"/>
+                {/* <Line data={data} options={options} /> */}
+                {/* <img src="https://www.tibco.com/sites/tibco/files/media_entity/2022-01/doughnut-chart-example.svg" alt="graph1"/> */}
               </div>
             </div>
 
