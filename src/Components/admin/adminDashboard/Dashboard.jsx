@@ -1,32 +1,63 @@
-import React, { Fragment } from "react";
-import { Line } from 'react-chartjs-2';
+import React, { Fragment, useEffect, useRef, useState } from "react";
+import ApexCharts from 'apexcharts';
+import Chart from 'react-apexcharts';
+import { getAllBookings, getAllDashboardData } from "../../../api_Integration/Admin/admin";
 
 function Maindiv() {
-  
-  const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        label: 'Sales',
-        data: [12, 19, 3, 5, 2, 3, 11],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1,
+  const chartRef = useRef(null);
+  const [bookingsData,setBookingsData] = useState([])
+  console.log(bookingsData.lastweekDates);
+  const [chartOptions, setChartOptions] = useState({
+    chart: {
+      toolbar:{
+        show:false
       },
-    ],
-  };
-  
-  const options = {
-    scales: {
-      y: {
-        type: 'logarithmic',
-        ticks: {
-          beginAtZero: true,
-          stepSize: 10,
-        },
+      height: 350,
+      type: 'line',
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'straight'
+    },
+    title: {
+      text: 'Product Trends by Month',
+      align: 'left',
+    },
+    grid: {
+      row: {
+        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        opacity: 0.5
       },
     },
-  };
+    xaxis: {
+      categories: ['jan','feb','mar','apr','may','june','july','aug','sep']
+    }
+  });
+
+  const [chartSeries, setChartSeries] = useState([{
+    name: 'My Series',
+    data: [10, 20, 30, 40, 45, 60, 50, 80, 90],
+  }]);
+
+  useEffect(() => {
+    const chart = new ApexCharts(chartRef.current, chartOptions);
+    chart.render();
+
+    const fetchData = async() => {
+      const response = await getAllDashboardData();
+      setBookingsData(response.data)
+    }
+    fetchData();
+   
+  }, [chartOptions]);
+
+  let totalSales = 0;
+    
 
   return (
     <Fragment>
@@ -35,30 +66,30 @@ function Maindiv() {
           
           <div className="chart3 flex">
                 <div className="text-center col-span-1 w-1/2 pt-5">
-                  <h1 className="font-medium text-2xl ">Income</h1>
+                  <h1 className="font-medium text-2xl ">Total Sales</h1>
                   <div className="flex flex-col justify-center h-3/4">
-                  <h1 className="text-lg font-thin ">4566</h1>
+                  <h1 className="text-lg font-thin ">{bookingsData.totalSales}</h1>
                   </div>
                 </div>
 
                 <div className="text-center col-span-2 w-1/2 pt-5">
                   <h1 className="font-medium text-2xl ">Profit</h1>
                   <div className="flex flex-col justify-center h-3/4">
-                  <h1 className="text-lg">4566</h1>
+                  <h1 className="text-lg">{bookingsData.totalProfit}</h1>
                   </div>
                 </div>
 
                 <div className="text-center col-span-2 w-1/2 pt-5">
-                  <h1 className="font-medium text-2xl ">Theaters</h1>
+                  <h1 className="font-medium text-2xl ">Users</h1>
                   <div className="flex flex-col justify-center h-3/4">
-                  <h1 className="text-lg">13</h1>
+                  <h1 className="text-lg">{bookingsData.totalUsers}</h1>
                   </div>
                 </div>
 
                 <div className="text-center col-span-2 w-1/2 pt-5">
                   <h1 className="font-medium text-2xl">Shows</h1>
                   <div className="flex flex-col justify-center h-3/4">
-                  <h1 className="text-lg">35</h1>
+                  <h1 className="text-lg">{bookingsData.totalTheaters}</h1>
                   </div>
                 </div>
           </div>
@@ -66,19 +97,13 @@ function Maindiv() {
           <div className="maincharts flex">
             <div className="chart1">
             
-              <div className="flex justify-start text-slate-500 text-sm col-span-3 w-full h-full">
-                {/* <Line data={data} options={options} /> */}
-                {/* <img src="https://www.tibco.com/sites/tibco/files/media_entity/2022-01/doughnut-chart-example.svg" alt="graph1"/> */}
+              <div className="flex justify-start  text-sm col-span-3 w-full h-full mt-3">
+              <Chart options={chartOptions} series={chartSeries} type="line" height={400} width={450} ref={chartRef} />
               </div>
             </div>
 
             <div className="chart2 ">
-              <img
-                className="w-full h-full rounded-3xl"
-                alt="graph "
-                src="https://www.tableau.com/sites/default/files/2021-09/Line%20Chart%201%20-%20Good%20-%20900x650.png"
-              />
-              {/* <CChart type="line" datasets={chartData.datasets} options={chartOptions} style={{ width: '100%', height: '100px' }} /> */}
+              <Chart options={chartOptions} series={chartSeries} type="bar" height={400} width={450} ref={chartRef} />
             </div>
           </div>
         </div>

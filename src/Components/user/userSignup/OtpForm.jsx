@@ -35,10 +35,6 @@ function OtpForm(props) {
 
   const handleOTP = async(e) => {
     try {
-      console.log('here Calling');
-      console.log(inputData.num)
-      console.log(signupOtp)
-      console.log(resendData)
       if(inputData.num!==""){
         if(signupOtp===inputData.num || resendData===inputData.num){
           e.preventDefault()
@@ -59,6 +55,7 @@ function OtpForm(props) {
           toast.error('Incorrect OTP')
           e.preventDefault()
         }
+        
       }else{
         toast.error('Incorrect OTP')
         e.preventDefault()

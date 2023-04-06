@@ -69,12 +69,6 @@ function SideNav() {
               <span>Bookings</span>
             </Link>
           </div>
-          <div className="route">
-            <button>Sales Report</button>
-          </div>
-          <div className="route">
-            <button>Payment</button>
-          </div>
         </div>
 
         <div className="text-center grid py-16">

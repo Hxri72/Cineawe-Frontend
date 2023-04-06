@@ -109,3 +109,13 @@ export const deleteMovie = async (payload) => {
         return error.response
     }
 }
+
+export const getAllDashboardData = async() => {
+    try {
+        const response = await axiosInstanceAdmin.get('/get-dashboardData')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+

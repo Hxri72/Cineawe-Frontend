@@ -27,6 +27,7 @@ function Posters() {
       const fetchData1 = async() => {
         dispatch(showLoading())
         const response1 = await getAllMovies()
+        console.log(response1)
         console.log(response1.data)
         setEnglishMovies(response1.data.englishMovies)
         setMalayalamMovies(response1.data.malayalamMovies)

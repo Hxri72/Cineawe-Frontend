@@ -100,7 +100,7 @@
     height: 100%;
     width: 50%;
     @apply
-    bg-slate-800
+    bg-slate-50
     rounded-3xl
 }
 
@@ -109,7 +109,7 @@
     width: 50%;
     @apply
     ml-10
-    bg-slate-400
+    bg-slate-50
     rounded-3xl
 }
 

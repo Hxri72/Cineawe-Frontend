@@ -1,7 +1,7 @@
 .mainDivOwner{
     @apply
     w-full
-    h-auto
+    h-screen
     bg-slate-200
     rounded-3xl
 }

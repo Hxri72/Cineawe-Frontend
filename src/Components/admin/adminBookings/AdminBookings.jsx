@@ -1,11 +1,18 @@
-import React, { Fragment, useEffect, useMemo, useState } from 'react'
+import React, { Fragment, useEffect, useMemo, useState ,useRef } from 'react'
 import { usePagination, useTable } from 'react-table';
 import { getAllBookings } from '../../../api_Integration/Admin/admin';
+import {useReactToPrint} from 'react-to-print'
 
 
 function AdminBooking() {
-
     const [bookingData, setBookingData] = useState([])
+    const componentPdf = useRef()
+
+    const generatePDF = useReactToPrint({
+      content: ()=> componentPdf.current,
+      documentTitle : 'Booking Data',
+      pageStyle : 'black'
+    });
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -81,7 +88,11 @@ function AdminBooking() {
                     <h1>Booking List</h1>
                   </div>
 
-              <table className="text-white display" id="myTable" {...getTableProps()}>
+                  <div className='flex justify-end'>
+                    <button className='text-white bg-blue-700 py-1 px-3 mr-4 rounded-md' onClick={generatePDF}>Export to PDF</button>
+                  </div>
+              <div ref={componentPdf} className='w-full'>
+              <table className="text-white display mt-3" id="myTable" {...getTableProps()}>
               <thead>
                 {headerGroups && headerGroups.map((headerGroup)=>(
                   
@@ -115,6 +126,7 @@ function AdminBooking() {
                 
               </tbody>
             </table>
+            </div>
             <div className="text-white flex justify-around p-5">
               <button onClick={()=>previousPage()} className='border-none px-3 py-1 rounded-md bg-slate-800'>Previous</button>
               <button onClick={()=>nextPage()} className='border-none px-3 py-1 rounded-md bg-slate-800'>Next</button>
