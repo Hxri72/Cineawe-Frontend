@@ -57,7 +57,7 @@ export const getCastDetails = async(payload) => {
     }
 }
 
-export const getMoviename = async (payload,language) => {
+export const getMoviename = async (payload) => {
     try {
         const response = await axiosInstanceMovie.get(`/search/movie?api_key=${API_KEY}&query=${payload}`)
         return response.data

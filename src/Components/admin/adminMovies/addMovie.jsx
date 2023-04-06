@@ -13,7 +13,7 @@ function AddMovie() {
     const handleInputChange = async (e) => {
         try {
           const value = e.target.value;
-          setInputvalue(value);
+          setInputvalue(value); 
           const response = await getMoviename(value);
           console.log(response)
           setSuggestions(response.results);
