@@ -9,6 +9,7 @@ function PaymentSection() {
     const navigate = useNavigate()
     const Razorpay = useRazorpay()
     const {user} = useSelector((state) => state.users)
+    const {owner} = useSelector((state) => state.owners)
 
     const [checked,setChecked] = useState(false)
     const [email,setEmail] = useState(user.email)
@@ -40,6 +41,7 @@ function PaymentSection() {
 
     const paymentData = {
         user:user,
+        owner:owner,
         email : email,
         phone : phone,
         price : total,

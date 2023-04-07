@@ -34,7 +34,7 @@ function SideNav() {
             </div>
           </div>
           <div>
-            <h1 className="font-semibold text-lg mt-2">{owner && owner.email}</h1>
+            <h1 className="font-semibold text-lg mt-2">{owner && owner.fullname}</h1>
           </div>
           <div>
             <h1 className="text-slate-500">Theater Owner</h1>

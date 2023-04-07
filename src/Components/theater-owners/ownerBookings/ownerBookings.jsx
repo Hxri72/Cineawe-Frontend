@@ -1,14 +1,18 @@
 import React, { Fragment, useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { usePagination, useTable } from 'react-table';
 import { getAllBookings } from '../../../api_Integration/Admin/admin';
+import { getAllBookingsOwner } from '../../../api_Integration/owner/ownerInstance';
 
 function ManageBooking() {
     const [bookingData,setBookingData] = useState([])
+    const {owner} = useSelector((state) => state.owners)
     useEffect(() => {
         const fetchUser = async () => {
-          const response = await getAllBookings();
+          console.log(owner)
+          const response = await getAllBookingsOwner({owner:owner});
+          console.log(response)
           if (response.success) {
-            console.log(response.data)
             setBookingData(response.data);
           } else {
             console.log("no users");

@@ -99,5 +99,14 @@ export const deleteTheater = async (payload) => {
     }
 }
 
+export const getAllBookingsOwner = async (payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/owner-bookings',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
 
 
