@@ -71,7 +71,7 @@ function SideNav() {
           </div>
         </div>
 
-        <div className="text-center grid py-16">
+        <div className="flex flex-col justify-end w-full h-48">
           <button onClick={logoutOwner}  className="text-slate-500">
             Logout
           </button>
