@@ -45,6 +45,7 @@ function ShowDetails() {
         const response = await getMovieDetails(movieId)
         const responseDate = await getShowDates()
         setShowDate(responseDate.data)
+        console.log(response)
         setMovieDetails(response)
         window.scrollTo(0, 0);
     }
@@ -101,7 +102,6 @@ function ShowDetails() {
                           ))}                           
                         </div>
                     </div>
-
                 </div>
                 ))}
                 </>

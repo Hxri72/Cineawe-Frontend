@@ -21,14 +21,15 @@ function ListBooking() {
     fetchData();
   },[user.email])
 
-  const handleCancel = (bookingId,showId,selectedSeats,theaterName,userMail) => {
+  const handleCancel = (bookingId,showId,selectedSeats,theaterName,userMail,showDate) => {
 
     const data = {
       bookingId : bookingId,
       showId : showId,
       selectedSeats : selectedSeats,
       theaterName : theaterName,
-      userMail : userMail
+      userMail : userMail,
+      showDate:showDate
     }
 
     Swal.fire({
@@ -101,7 +102,7 @@ function ListBooking() {
                     </div>
 
                     <div className='flex justify-end mt-2'>
-                      <button className='px-3 py-1 rounded-lg bg-red-600 text-white font-medium' onClick={()=>handleCancel(ticket._id,ticket.showId,ticket.selectedSeats,ticket.theaterName,ticket.userMail)}>Cancel</button>
+                      <button className='px-3 py-1 rounded-lg bg-red-600 text-white font-medium' onClick={()=>handleCancel(ticket._id,ticket.showId,ticket.selectedSeats,ticket.theaterName,ticket.userMail,ticket.showDate)}>Cancel</button>
                     </div>
                   </div>
 
