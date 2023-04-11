@@ -1,15 +1,15 @@
 import axios from 'axios'
 
 export const axiosInstanceAdmin = axios.create({
-    baseURL : 'http://localhost:5000/api/admin'
+    baseURL : 'https://cineawe-server.cineawe.online/api/admin'
 })
 
 export const axiosInstanceUser = axios.create({
-    baseURL : 'http://localhost:5000/api/users'
+    baseURL : 'https://cineawe-server.cineawe.online/api/users'
 })
 
 export const axiosInstanceOwner = axios.create({
-    baseURL : 'http://localhost:5000/api/owner'
+    baseURL : 'https://cineawe-server.cineawe.online/api/owner'
 })
 
 export const axiosInstanceMovie = axios.create({

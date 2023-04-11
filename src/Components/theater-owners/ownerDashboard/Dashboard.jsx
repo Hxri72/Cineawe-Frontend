@@ -6,28 +6,30 @@ import { useSelector } from 'react-redux';
 import { getAllBookingsByDayOwner, getDashboardDataOwner } from '../../../api_Integration/owner/ownerInstance';
 
 
+
+
 function Dashboard() {
 
   const {owner} = useSelector((state) => state.owners)
   const [dashboardData,setDashboardData] = useState('')
+  const [totalSales,setTotalSales] = useState([])
+  const [allShows,setAllShows] = useState([])
 
   useEffect(()=> {
     const fetchData = async()=>{
       const response = await getDashboardDataOwner({owner:owner})
       setDashboardData(response.data)
       const response2 = await getAllBookingsByDayOwner({owner:owner})
-      console.log(response2.data)
-
+      setTotalSales(response2.data)
+  
     }
     fetchData();
   },[owner])
 
-  const data = [
-    {
-      name: 'Page A',
-      pv: 2400,
-    }
-  ];
+  const data = totalSales.map((item) => ({
+    name: item.date,
+    pv: item.totalPrice,
+  }));
 
   //Barchart
   const data2 = [
