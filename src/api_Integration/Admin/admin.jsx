@@ -119,3 +119,21 @@ export const getAllDashboardData = async() => {
     }
 }
 
+export const getAllBookingsByDay = async() => {
+    try {
+        const response = await axiosInstanceAdmin.get('/get-bookings-by-day')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getDailyShows = async() => {
+    try {
+        const response = await axiosInstanceAdmin.get('/get-shows-by-day')
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+

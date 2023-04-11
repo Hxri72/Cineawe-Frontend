@@ -1,6 +1,7 @@
 import React,{PureComponent} from 'react'
 import '../../../stylesheets/theater_owners/ownerDashboard.css'
 import {BarChart,Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useEffect } from 'react';
 
 
 function Dashboard() {
