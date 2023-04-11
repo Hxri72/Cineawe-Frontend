@@ -21,14 +21,16 @@ import {
 function Maindiv() {
   const [bookingsData, setBookingsData] = useState("");
   const [totalSales,setTotalSales] = useState([])
+  const [allShows,setAllShows] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getAllDashboardData()
-      const response2 = await getAllBookingsByDay()
       setBookingsData(response.data);
+      const response2 = await getAllBookingsByDay()
       setTotalSales(response2.data)
       const response3 = await getDailyShows()
+      setAllShows(response3.data)
     };
     fetchData();
   },[]);
@@ -38,50 +40,12 @@ function Maindiv() {
     pv: item.totalPrice,
   }));
 
-  const data2 = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+  const data2 = allShows.map((item) => ({
+    name: item.date,
+    uv: item.totalShows,
+  }));
+
+
 
   return (
     <Fragment>
@@ -120,8 +84,10 @@ function Maindiv() {
           </div>
 
           <div className="maincharts flex">
-            <div className="chart1">
+            <div className="chart1 p-2">
+            <lable className='pl-10 text-base font-semibold'>TotalSales per day</lable>
               <div className="flex justify-start  text-sm col-span-3 w-full h-full mt-3">
+                
                 {/* <Chart options={chartOptions} series={chartSeries} type="line" height={400} width={450} ref={chartRef} /> */}
                 <ResponsiveContainer
                   width="90%"
@@ -156,11 +122,12 @@ function Maindiv() {
               </div>
             </div>
 
-            <div className="chart2">
+            <div className="chart2 text-sm p-2">  
+              <lable className='pl-10 text-base font-semibold'>TotalShows per day</lable>
               <ResponsiveContainer width="90%" height="90%">
                 <BarChart width={140} height={40} data={data2}>
                   <Bar dataKey="uv" fill="#8884d8" />
-                  <XAxis dataKey="name" />
+                  <XAxis className="text-sm" dataKey="name" />
                   <YAxis />
                 </BarChart>
               </ResponsiveContainer>

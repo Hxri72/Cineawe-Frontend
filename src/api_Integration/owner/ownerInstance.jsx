@@ -108,5 +108,22 @@ export const getAllBookingsOwner = async (payload) => {
     }
 }
 
+export const getDashboardDataOwner = async (payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/owner-dashboard-data',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
+
+export const getAllBookingsByDayOwner = async (payload) => {
+    try {
+        const response = await axiosInstanceOwner.post('/owner-bookings-data',(payload))
+        return response.data
+    } catch (error) {
+        return error.response
+    }
+}
 
 
