@@ -5,7 +5,6 @@ function PublicRouteAdmin(props) {
     if(localStorage.getItem("adminToken")){
         return <Navigate to={'/admin/adminhome'}/>
       }else{
-        console.log('user is there')
         return props.children
       }
 }
