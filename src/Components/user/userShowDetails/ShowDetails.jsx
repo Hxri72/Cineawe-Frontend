@@ -39,7 +39,6 @@ function ShowDetails() {
     navigate('/seat-selection',{state:{show,selectedValue}})
   }
 
-
   useEffect(()=>{
     const fetchData = async()=>{
         const response = await getMovieDetails(movieId)

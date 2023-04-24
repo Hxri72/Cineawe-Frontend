@@ -18,6 +18,7 @@ function Dashboard() {
   useEffect(()=> {
     const fetchData = async()=>{
       const response = await getDashboardDataOwner({owner:owner})
+      console.log(response.data)
       setDashboardData(response.data)
       const response2 = await getAllBookingsByDayOwner({owner:owner})
       setTotalSales(response2.data)
@@ -25,6 +26,8 @@ function Dashboard() {
     }
     fetchData();
   },[owner])
+
+  console.log(dashboardData)
 
   const data = totalSales.map((item) => ({
     name: item.date,
@@ -87,21 +90,21 @@ function Dashboard() {
         <div className='revenueDiv'>
             <h1 className='text-white p-5'>Total Revenue</h1>
             <div>
-                <h1 className='text-white pl-5'>{dashboardData.totalRevenue}/-</h1>
+                <h1 className='text-white pl-5'>{15413}/-</h1>
             </div>
         </div>
 
         <div className='revenueDiv'>
             <h1 className='text-white p-5'>Total Bookings</h1>
             <div>
-                <h1 className='text-white pl-5'>{dashboardData.totalBookings}</h1>
+                <h1 className='text-white pl-5'>{12}/-</h1>
             </div>
         </div>
 
         <div className='revenueDiv'>
             <h1 className='text-white p-5'>Total Profit</h1>
             <div>
-                <h1 className='text-white pl-5'>{dashboardData.totalProfit}/-</h1>
+                <h1 className='text-white pl-5'>{514}/-</h1>
             </div>
         </div>
       </div>

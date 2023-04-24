@@ -74,8 +74,14 @@ function ManageBooking() {
   return (
     <Fragment>
         <div className='mainDivOwner'>
+            {bookingData.length == 0 ?
+             <div className="noShowsHead2">
+                <h1 className='text-3xl font-bold text-slate-400'>No Bookings</h1>
+            </div>  :
+
+            <>
             <div className='dashboardHead'>
-                <h1 className='text-2xl font-semibold'>Bookings</h1>
+              <h1 className='text-2xl font-semibold'>Bookings</h1>
             </div>
 
             <table className="text-black display" id="myTable" {...getTableProps()}>
@@ -114,6 +120,8 @@ function ManageBooking() {
               <button onClick={()=>previousPage()} className='border-none px-3 py-1 rounded-md bg-slate-800'>Previous</button>
               <button onClick={()=>nextPage()} className='border-none px-3 py-1 rounded-md bg-slate-800'>Next</button>
             </div>
+            </>
+            }
         </div>
     </Fragment>
   )
